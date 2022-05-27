@@ -18,6 +18,8 @@
 
   - HTML 페이지로 작성되어 있어 웹 브라우저로 바로 볼 수 있음
 
+
+
 ### java.long과 java.util 패키지
 
 #### java.lang 패키지
@@ -27,7 +29,9 @@
 - 포함된 클래스와 인터페이스는 import없이 사용
   - Object, System, Math ...
 
-<img src="https://lh4.googleusercontent.com/l-xg4LagNvtf9JtXsxGbE1lg74NPi98vQ-Vc3MhmZdeghmPYCY-qB-rqXR-BvtZWGoP_nr26p3bSuej9Y3t8WJi9fDkWNCaYqNyZaUN-mArN42Y0oG7YBmQiboqYPCESj4ezXNA" alt="img" style="zoom:50%;" />
+<img src="https://lh4.googleusercontent.com/l-xg4LagNvtf9JtXsxGbE1lg74NPi98vQ-Vc3MhmZdeghmPYCY-qB-rqXR-BvtZWGoP_nr26p3bSuej9Y3t8WJi9fDkWNCaYqNyZaUN-mArN42Y0oG7YBmQiboqYPCESj4ezXNA" alt="img" align="left" style="zoom:40%;" />
+
+
 
 ### Object 클래스
 
@@ -36,7 +40,9 @@
 - 다른 클래스를 상속하지 않으면 java.lang.Object 클래스 상속 암시
 - Object의 메소드는 모든 클래스에서 사용 가능
 
-<img src="https://lh5.googleusercontent.com/XzNH-qfVL3duuHU5SdR5RgZS-o7rZAhTXriZedo-wCupa_D6SMTD9mzJbDgPy6nLuVXhMv_0fFQvphac3GN9z3a7x_qTIz5eFjbaZ2e8Ro4-fi6bNNhXNbrJdJMjzkkUozFumi0" alt="img" align="left" style="zoom:50%;" />
+<img src="https://lh5.googleusercontent.com/XzNH-qfVL3duuHU5SdR5RgZS-o7rZAhTXriZedo-wCupa_D6SMTD9mzJbDgPy6nLuVXhMv_0fFQvphac3GN9z3a7x_qTIz5eFjbaZ2e8Ro4-fi6bNNhXNbrJdJMjzkkUozFumi0" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### Object 클래스의 메소드
 
@@ -44,11 +50,15 @@
 - 모든 클래스가 Object 클래스를 상속하기 때문에 Object 클래스의 메소드는 모든 클래스에서 사용
 - equals(), hashCode(), toString(), clone(), finalize() ...
 
+
+
 #### 객체 비교 (equals())
 
 - 기본적으로 == 연산자와 동일한 결과 리턴
 
-  <img src="https://lh4.googleusercontent.com/9IXZ1JNeHSm5-6Gjwccvrj5ml_dC_iLtTulb91uMSnmLs2RZUJCcdralXSlnnOfILk4qJpVTaaucErcykJ0rzt2ihtoQF4LF_jGqyaw-7sPee_DUtFhIeDOYyKAp3osNoikTOCI" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh4.googleusercontent.com/9IXZ1JNeHSm5-6Gjwccvrj5ml_dC_iLtTulb91uMSnmLs2RZUJCcdralXSlnnOfILk4qJpVTaaucErcykJ0rzt2ihtoQF4LF_jGqyaw-7sPee_DUtFhIeDOYyKAp3osNoikTOCI" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### 객체 해시코드 (hashCode())
 
@@ -56,6 +66,8 @@
 
 - Object의 hashCode() 메소드는 객체의 메모리 번지를 이용해 해시코드를 만들어서 리턴
   - 개별 객체는 해시코드가 모두 다름
+
+
 
 #### 객체 문자 정보 (toString())
 
@@ -75,6 +87,8 @@ java.lang.Object@de6ced
   - Object 하위 클래스에서 메소드 재정의해서 사용
     - String 클래스 : 문자열 리턴
     - Date 클래스 : 현재 시스템의 날짜와 시간 정보 리턴
+
+
 
 #### 객체 복제 (clone())
 
@@ -119,6 +133,8 @@ java.lang.Object@de6ced
        - 복제 객체를 변경하면 원본 객체도 변경됨 (얕은 복제의 단점)
      - Object의 clone() 메소드를 재정의해서 참조 객체를 복제하는 코드를 직접 생성해야 함
 
+
+
 #### 객체 소멸자 (finalize())
 
 - 참조하지 않는 배열이나 객체는 쓰레기 수집기(Garbage Collector : GC)가 자동으로 힙영역에서 소멸시킴
@@ -127,11 +143,15 @@ java.lang.Object@de6ced
 - 객체 소멸되기 전에 실행코드가 있다면
   - Object의 finalize() 재정의
 
+
+
 #### Throwable 클래스
 
 > java 언어의 모든 에러와 예외의 수퍼 클래스
 
-<img src="https://lh4.googleusercontent.com/y6hq2a1t4mi0IXjaRKmtEqYnjyQgNvfQS7C3mIaGZttOs_YuxwPOiZ1YinIDQuX-E8MjkLCZ067BV1L_l7wZzEwAPzYtJRMMhSwn6W2VyVwbWGFlPa72eFQ0uvBn7fhQKmQTnY0" alt="img" align="left" style="zoom: 33%;" />
+<img src="https://lh4.googleusercontent.com/y6hq2a1t4mi0IXjaRKmtEqYnjyQgNvfQS7C3mIaGZttOs_YuxwPOiZ1YinIDQuX-E8MjkLCZ067BV1L_l7wZzEwAPzYtJRMMhSwn6W2VyVwbWGFlPa72eFQ0uvBn7fhQKmQTnY0" alt="img" align="left" style="zoom: 40%;" />
+
+
 
 #### System.gc()
 
@@ -145,11 +165,15 @@ java.lang.Object@de6ced
     - Garbage Collector는 메모리의 모든 쓰레기, 객체를 소멸하지 않음
     - Garbage Collector의 구동 시점이 일정하지 않음
 
+
+
 #### Objects 클래스
 
 > 객체 비교, 해시코드 생성, null 여부, 객체 문자열 리턴 등의 연산을 수행하는 정적 메소드들로 구성된 Object의 유틸리티 클래스
 
-<img src="https://lh4.googleusercontent.com/bLFYmkHA3Ut6PDbKGQHoG1RbuFLce3f6R6PBNJVsuk4eHFcgVBYkpp-yh6UkgkO-L6FA2rkDpAxKMzfbyFmAhqO8BBOrxI5-v3kpgAkKj5T3rAR2J4-93Dh49uPTMh0ZfHIGTE8" alt="Object 클래스가 가지고 있는 정적 메소스" style="zoom:50%;" />
+<img src="https://lh4.googleusercontent.com/bLFYmkHA3Ut6PDbKGQHoG1RbuFLce3f6R6PBNJVsuk4eHFcgVBYkpp-yh6UkgkO-L6FA2rkDpAxKMzfbyFmAhqO8BBOrxI5-v3kpgAkKj5T3rAR2J4-93Dh49uPTMh0ZfHIGTE8" alt="Object 클래스가 가지고 있는 정적 메소스" style="zoom:40%;" />
+
+
 
 ### System 클래스
 
@@ -158,6 +182,8 @@ java.lang.Object@de6ced
 - 운영체제의 기능 일부 이용 가능
   - 프로그램 종료, 키보드로부터 입력, 모니터 출력, 메모리 정리, 현재 시간 읽기 등
   - 시스템 프로퍼티 읽기, 환경 변수 읽기 등
+
+
 
 #### exit() 메소드
 
@@ -173,6 +199,8 @@ System.exit(0)
 - 정상종료 : 0
 - 비정상 종료 : 0 이외의 값
 - 어떤 값 주더라도 종료
+
+
 
 #### 현재 시간 읽기
 
@@ -194,6 +222,8 @@ System.exit(0)
 
 - 주로 프로그램 실행 소요 시간 구할 때 이용
 
+
+
 #### 시스템 프로퍼티 읽기 (getProperty())
 
 > JVM이 시작할 때 자동 설정되는 시스템의 속성값
@@ -204,7 +234,9 @@ String value = System.getProperty(String key);
 
 - 키와 값으로 구성
 
-  <img src="https://lh6.googleusercontent.com/Wb1gE6_2uIqcAejNYpnq5ks4xFbXZJp_1QPbBpBNTP3GLyF0EQokXEzglbQ9HiuIlhE1g4TkhguVZEp4OaiOvNmHCx8IAKT9XaVkuh3OrUzPZRmWtb63pimaLmOc3NxN-7N5KPU" alt="img" align="left" style="zoom:50%;"/>
+  <img src="https://lh6.googleusercontent.com/Wb1gE6_2uIqcAejNYpnq5ks4xFbXZJp_1QPbBpBNTP3GLyF0EQokXEzglbQ9HiuIlhE1g4TkhguVZEp4OaiOvNmHCx8IAKT9XaVkuh3OrUzPZRmWtb63pimaLmOc3NxN-7N5KPU" alt="img" align="left" style="zoom:40%;"/>
+
+
 
 #### 환경 변수 읽기 (getenv())
 
@@ -213,6 +245,8 @@ String value = System.getenv(String name);
 ```
 
 - 운영체제가 제공하는 환경 변수 값(문자열)을 읽음
+
+
 
 ### String 클래스
 
@@ -226,7 +260,9 @@ String value = System.getenv(String name);
 
 - 키보드로부터 읽은 바이트 배열을 문자열로 변환
 
-  <img src="https://lh6.googleusercontent.com/VTVXcJ7lWHWn5h_d9dPMGnnNDtONDlZuZHkIU6SGkeEf7nWWY30TFbf1EIT7LCByANDFmybCoZwlStjs1zzoyJWbf0y2a4oG1S5WWeQRVR3n5E97GTIOziEea-Zh8GNQZ07icqE" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh6.googleusercontent.com/VTVXcJ7lWHWn5h_d9dPMGnnNDtONDlZuZHkIU6SGkeEf7nWWY30TFbf1EIT7LCByANDFmybCoZwlStjs1zzoyJWbf0y2a4oG1S5WWeQRVR3n5E97GTIOziEea-Zh8GNQZ07icqE" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### String 메소드
 
@@ -234,7 +270,9 @@ String value = System.getenv(String name);
 
 - 사용빈도 높은 메소드
 
-  <img src="https://lh6.googleusercontent.com/kt0izfLnW1pfa-7MRM8oR6nra157vWAdyyBvweybKedfP2oiJoeYW3nywiK8iwFYYW99kPKgbxVqteMzFK6orC_DlnEMsaLeUSdsbRc4umC86dbtHqAmyESys5nSQasS06clTA8" alt="img" align="left" style="zoom:50%;"/>
+  <img src="https://lh6.googleusercontent.com/kt0izfLnW1pfa-7MRM8oR6nra157vWAdyyBvweybKedfP2oiJoeYW3nywiK8iwFYYW99kPKgbxVqteMzFK6orC_DlnEMsaLeUSdsbRc4umC86dbtHqAmyESys5nSQasS06clTA8" alt="img" align="left" style="zoom:40%;"/>
+
+
 
 ##### 문자 추출 (charAt())
 
@@ -244,8 +282,6 @@ String value = System.getenv(String name);
 String subject = "자바 프로그래밍";
 char charValue = subject.charAt(3);
 ```
-
-##### 문자열 비교 (equals())
 
 
 
@@ -266,6 +302,8 @@ byte[] bytes = "문자열".getBytes();
   } catch (UnsupportedEncodingException e ) { }
   ```
 
+
+
 ##### 문자열 찾기 (indexOf())
 
 > 매개값으로 주어진 문자열이 시작되는 인덱스를 리턴
@@ -278,6 +316,8 @@ int index = subject.indexOf("프로그래밍");
 - 만약 주어진 문자열이 포함되어 있지 않으면 -1을 리턴
 - 특정 문자열이 포함되어 있는지 여부에 따라 실행 코드 달리할 때 사용
 
+
+
 ##### 문자열 길이 (length())
 
 > 문자열의 길이(문자의 수)를 리턴
@@ -289,6 +329,8 @@ int length = subject.length();
 
 - 공백도 문자에 포함
 
+
+
 ##### 문자열 대치 (replace())
 
 > 첫 번째 매개값인 문자열을 찾아 두 번째 매개값인 문자열로 대치한 새로운 문자열을 생성하고 리턴
@@ -299,6 +341,8 @@ String newStr = oldStr.replace("자바", "JAVA");
 ```
 
 - String 객체의 문자열은 변경이 불가한 특성을 갖기 때문에 replace() 메소드가 리턴하는 문자열은 원래 문자열의 수정본이 아니라 완전히 새로운 문자열
+
+
 
 ##### 문자열 잘라내기 (substring())
 
@@ -322,6 +366,8 @@ String firstNum = ssn.substring(0, 6);
 String secondNum = ssn.substring(7);
 ```
 
+
+
 ##### 알파벳 소,대문자 변경 (toLowerCase(), toUpperCase())
 
 > toLowerCase() 메소드는 문자열을 모두 소문자로 바꾼 새로운 문자열을 생성한 후 리턴
@@ -334,6 +380,8 @@ String lowerCase = original.toLowerCase(original);
 String upperCase = original.toUpperCase(original);
 ```
 
+
+
 ##### 문자열 앞뒤 공백 잘라내기 (trim())
 
 > 문자열의 앞뒤 공백을 제거한 새로운 문자열을 생성하고 리턴
@@ -345,6 +393,8 @@ String newStr = oldStr.trim();
 
 - 앞뒤의 공백만 제거할 뿐 중간의 공백은 제거하지 않음
 
+
+
 ##### 문자열 변환 (valueOf())
 
 > 기본 타입의 숫자값을 문자열로 변환
@@ -353,7 +403,9 @@ String newStr = oldStr.trim();
 
 - static 메소드 :  String.valueOf()
 
-  <img src="https://lh5.googleusercontent.com/reSHF-2lYe6NjJMHZ6qeHxFeEehaedJxcAHxgTqpuJri9paX15ZjbUz3K_Wy2MVyISrwZg3LTjWu0rbHFAO-9d7gglvuNlYpIzb5O-HfFokioQlL7q2FfBUuNttndupRs8lmvqE" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh5.googleusercontent.com/reSHF-2lYe6NjJMHZ6qeHxFeEehaedJxcAHxgTqpuJri9paX15ZjbUz3K_Wy2MVyISrwZg3LTjWu0rbHFAO-9d7gglvuNlYpIzb5O-HfFokioQlL7q2FfBUuNttndupRs8lmvqE" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### 문자열 분리 방법
 
@@ -371,6 +423,8 @@ String[] result = "문자열".split("정규표현식");
   String[] names = "문자열".split("정규표현식1|정규표현식2|정규표현식3");
   ```
 
+
+
 ##### StringTokenizer 클래스
 
 > 문자열에서 구분자로 분리한 토큰을 반환
@@ -379,7 +433,7 @@ String[] result = "문자열".split("정규표현식");
 StringTokenizer st = new StringTokenizer("문자열", "구분자");
 ```
 
-<img src="https://lh5.googleusercontent.com/EWDYHSqd2HNMgwfFgdBgoFgLtbGSbwLoo_Dw8HTTWNLCpQLeoZ0lGvfjrUl1cp-vMRan8fWOQcMlgs0bSv4Cm1zgvrBidwGSQ1xH3FIXXU1W6itPQQN30bB1H33n4402sZn4UkU" alt="img" align="left" style="zoom:50%;" />
+<img src="https://lh5.googleusercontent.com/EWDYHSqd2HNMgwfFgdBgoFgLtbGSbwLoo_Dw8HTTWNLCpQLeoZ0lGvfjrUl1cp-vMRan8fWOQcMlgs0bSv4Cm1zgvrBidwGSQ1xH3FIXXU1W6itPQQN30bB1H33n4402sZn4UkU" alt="img" align="left" style="zoom:40%;" />
 
 - 토큰
 
@@ -387,10 +441,14 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
 
   - 특정 구분자로 분리되는 문자열의 구성 요소
 
+
+
 ##### 문자열 결합 연산자 (+)
 
 - String은 내부의 문자열 수정 불가
 - 대치된 새로운 문자열 리턴
+
+
 
 #### StringBuffer, StringBuilder 클래스
 
@@ -410,7 +468,9 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
   StringBuilder sb = new StringBuilder("Java");
   ```
 
-  <img src="https://lh3.googleusercontent.com/FMgmWtOB7KSn2adODXHLz_ZwNSbxGSUjKWr09_no6LtgxSZ7x7LCPREHRtuyogp9ZhkjbuoLdYnYaN9d5SwHKlniGkUKl6ASUfKz34HM-SrnD9DNoxpCtvSwUJYaytOkg5w7jv0" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh3.googleusercontent.com/FMgmWtOB7KSn2adODXHLz_ZwNSbxGSUjKWr09_no6LtgxSZ7x7LCPREHRtuyogp9ZhkjbuoLdYnYaN9d5SwHKlniGkUKl6ASUfKz34HM-SrnD9DNoxpCtvSwUJYaytOkg5w7jv0" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### 정규 표현식 (Regular Expression)
 
@@ -420,14 +480,19 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
 
 - ex) 이메일, 전화번호, 비밀번호 등
 
-  <img src="https://lh3.googleusercontent.com/3PyhORAf7my-ugyCApEG_Uf9cd4LZpD3SSWx3WILbv1xqxBHP6DKc0urg8pgbME_sM9xut_W8lqNXUByaeyfQjdnAxRAWy9JvLk4BbhKR37i3TMm2QjB-xaKP6WaqA5VOB3GRxY" alt="img" align="left" style="zoom:50%;"/>
+  <img src="https://lh3.googleusercontent.com/3PyhORAf7my-ugyCApEG_Uf9cd4LZpD3SSWx3WILbv1xqxBHP6DKc0urg8pgbME_sM9xut_W8lqNXUByaeyfQjdnAxRAWy9JvLk4BbhKR37i3TMm2QjB-xaKP6WaqA5VOB3GRxY" alt="img" align="left" style="zoom:40%;"/>
 
-  ##### Pattern 클래스
+  
 
-  > 정규 표현식으로 문자열을 검증하는 역할
+##### Pattern 클래스
 
-  ```java
-  boolean result = Pattern.matches("정규식", "검증할 문자열");
+> 정규 표현식으로 문자열을 검증하는 역할
+
+```java
+boolean result = Pattern.matches("정규식", "검증할 문자열");
+```
+
+
 
 #### Arrays 클래스
 
@@ -439,7 +504,9 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
 
   - ex) Arrays.copyOf(), Arrays.sort()
 
-  <img src="https://lh6.googleusercontent.com/utFUZTZlffJwCEP-VUputDqPKbVEanr3MhqBEWqxIYoQz6t1IO8Q507qf7Mjm6xQuqJT2IA_UrJhRILsaGMQmZnF0v7yhC9wW-JiTyfn6ko1_pEX7bWlcNvsqXpQXP2herIDxxU" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh6.googleusercontent.com/utFUZTZlffJwCEP-VUputDqPKbVEanr3MhqBEWqxIYoQz6t1IO8Q507qf7Mjm6xQuqJT2IA_UrJhRILsaGMQmZnF0v7yhC9wW-JiTyfn6ko1_pEX7bWlcNvsqXpQXP2herIDxxU" alt="img" align="left" style="zoom:40%;" />
+
+
 
 ##### 배열 복사
 
@@ -465,6 +532,8 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
 
    ```java
    System.arraycopy(원본배열, 원본시작인덱스, 타겟배열, 타겟시작인덱스, 복사개수)
+
+
 
 ##### 배열 항목 비교
 
@@ -501,6 +570,8 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
 
   - 주의 : Collections.reverseOrder()은 int[]에 사용 불가
 
+
+
 ##### 배열 항목 검색
 
 > 특정 값 위치한 인덱스를 얻는 것
@@ -512,6 +583,8 @@ Arrays.binarySearch(배열명, 찾는 값)
 
 - Arrays.sort(배열명)로 먼저 정렬하고 Arrays.binarySearch(배열명, 찾는 값) 메소드로 항목을 찾음
 
+
+
 #### Wrapper(포장) 클래스
 
 ##### Wrapper 객체
@@ -520,11 +593,15 @@ Arrays.binarySearch(배열명, 찾는 값)
 
 - 기본 타입의 값은 외부에서 변경
 
+
+
 ##### Wrapper 클래스
 
 > 기본 타입에 대응되는 클래스
 
-<img src="https://lh6.googleusercontent.com/ICXI87KwYHnn7aRiT_K6N2ckbhQcFgJwIIBYIgHA6AQ7AUeXUxRAFrTQU28Bw7Jfw0GvCYfbWBMCU0QhowAGyWAWzjElHdFDIgl5LeNUtxzhbGGyYRX2x_P9H9zayQsY0Snibw8" alt="img" align="left" style="zoom:50%;" />
+<img src="https://lh6.googleusercontent.com/ICXI87KwYHnn7aRiT_K6N2ckbhQcFgJwIIBYIgHA6AQ7AUeXUxRAFrTQU28Bw7Jfw0GvCYfbWBMCU0QhowAGyWAWzjElHdFDIgl5LeNUtxzhbGGyYRX2x_P9H9zayQsY0Snibw8" alt="img" align="left" style="zoom:40%;" />
+
+
 
 ##### 박싱(Boxing)과 언박싱(Unboxing)
 
@@ -551,7 +628,9 @@ Arrays.binarySearch(배열명, 찾는 값)
 
   1. 생성자 이용
 
-     <img src="https://lh6.googleusercontent.com/vNPrtWdKCHQvDBKcjZ-BAqalp_xRwCBf_noVtegFQ5vjMYiWdUtTS3hSBUHnENdV4tboKUwvprMRABqzJH84eiO80_a-suCF59Bt4AmwR3jJg54ybkm52LjQ4GkovRK8VLYiQUE" alt="img" align="left" style="zoom:50%;" />
+     <img src="https://lh6.googleusercontent.com/vNPrtWdKCHQvDBKcjZ-BAqalp_xRwCBf_noVtegFQ5vjMYiWdUtTS3hSBUHnENdV4tboKUwvprMRABqzJH84eiO80_a-suCF59Bt4AmwR3jJg54ybkm52LjQ4GkovRK8VLYiQUE" alt="img" align="left" style="zoom:40%;" />
+
+     
 
   2. valueOf() 메소드 이용
 
@@ -567,7 +646,9 @@ Arrays.binarySearch(배열명, 찾는 값)
 
   - 기본타입명+Value()
 
-    <img src="https://lh6.googleusercontent.com/df8qLQOrJjFYwWeXDZIYqUTstH1p5U1JC_tW3CVWWE4VVB3dIzKSyM1KIdKzl4QIjMTGqHN76KBONs5dn5HHdbVAQ2nx_BDlT5EF0yDQuoA0r5wu5BqFDii7cbFUjb57j6nRtZE" alt="img" align="left" style="zoom:50%;" />
+    <img src="https://lh6.googleusercontent.com/df8qLQOrJjFYwWeXDZIYqUTstH1p5U1JC_tW3CVWWE4VVB3dIzKSyM1KIdKzl4QIjMTGqHN76KBONs5dn5HHdbVAQ2nx_BDlT5EF0yDQuoA0r5wu5BqFDii7cbFUjb57j6nRtZE" alt="img" align="left" style="zoom:40%;" />
+
+
 
 ##### 자동 박싱과 언박싱
 
@@ -588,6 +669,8 @@ Arrays.binarySearch(배열명, 찾는 값)
     int value2 = obj + 100;		// 자동 언박싱
     ```
 
+
+
 ##### 숫자 문자열을 기본 타입 값으로 변환
 
 - parse + 기본타입명(문자열) : 정적 메소드
@@ -601,13 +684,17 @@ Arrays.binarySearch(배열명, 찾는 값)
 - 포장 객체는 내부값을 비교하기 위해 ==와 != 연산자 사용 불가
 - 값을 언박싱 비교하거나, equals() 메소드로 내부값 비교
 
+
+
 #### Math, Random 클래스
 
 ##### Math 클래스
 
 > 수학 계산에 사용할 수 있는 정적 메소드 제공
 
-<img src="https://lh6.googleusercontent.com/fcI3MSyQxRD-GB0RZkMfGVNhFjzikNUzMHqNn_vXzphIZOXT7lpIoYRyblU-TiofxMoCTjODTYyZ3bigzvNkBw75sb5C3JXXpjQ-xKJ6itGLWBfqh65vFVWYTiFyKPeJRL6FB20" alt="img" align="left" style="zoom:50%;" />
+<img src="https://lh6.googleusercontent.com/fcI3MSyQxRD-GB0RZkMfGVNhFjzikNUzMHqNn_vXzphIZOXT7lpIoYRyblU-TiofxMoCTjODTYyZ3bigzvNkBw75sb5C3JXXpjQ-xKJ6itGLWBfqh65vFVWYTiFyKPeJRL6FB20" alt="img" align="left" style="zoom:40%;" />
+
+
 
 ##### Random 클래스
 
@@ -632,11 +719,15 @@ Arrays.binarySearch(배열명, 찾는 값)
      - seed 값을 초기값으로 하는 난수 발생
      - 실행할 때마다 동일한 난수 발생
 
-  <img src="https://lh6.googleusercontent.com/5a_R91MdNCPrejx7UTiNj9jrlTMf83F-nXKgZSfLWuLWNa00cf_sWBKNkocUTXvNUZIIPFzFOcor3jolE9ouk9JP7kPKX2GFrgzgBl93tYT3i4U4Um0NhJxuHsJxyuhWXbXpqWQ" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh6.googleusercontent.com/5a_R91MdNCPrejx7UTiNj9jrlTMf83F-nXKgZSfLWuLWNa00cf_sWBKNkocUTXvNUZIIPFzFOcor3jolE9ouk9JP7kPKX2GFrgzgBl93tYT3i4U4Um0NhJxuHsJxyuhWXbXpqWQ" alt="img" align="left" style="zoom:40%;" />
+
+
 
 - Random 클래스가 제공하는 메소드
 
-  <img src="https://lh6.googleusercontent.com/YyKHt48BQ3DYgWfVaMXVwuI_6EUEMc3srqX3KsXZLhfc8Rr9JunlSQoze_AdhkzxD7UIeScr03g-hvgcdIBtlFd44LiCkrYUGyR0A_zEIuNSm2HW_a6wz9UNd5CizgRK4zmUYb0" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh6.googleusercontent.com/YyKHt48BQ3DYgWfVaMXVwuI_6EUEMc3srqX3KsXZLhfc8Rr9JunlSQoze_AdhkzxD7UIeScr03g-hvgcdIBtlFd44LiCkrYUGyR0A_zEIuNSm2HW_a6wz9UNd5CizgRK4zmUYb0" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### Date, Calendar 클래스
 
@@ -657,6 +748,8 @@ Date now = new Date();
   String strDate = sdf.format(new Date());
   ```
 
+
+
 ##### Calendar 클래스
 
 > 달력을 표현한 추상 클래스
@@ -675,7 +768,9 @@ Calendar now = Calendar.getInstatnce();
 
 - 날짜 및 시간 정보 얻기
 
-  <img src="https://lh3.googleusercontent.com/B4XfQmfJmvSbp8bhTOEZOfOztDm8DXwEDpgurR77ZfKNWBukUIKTTOSdNtfRNkmBosoPyED3Sf8N2Z_l-LiILXQ8RH2_JpK9oBVpvxA308n5QWdKP3quvOalYszDlTobwwTO0Ag" alt="img" align="left" style="zoom:50%;" />
+  <img src="https://lh3.googleusercontent.com/B4XfQmfJmvSbp8bhTOEZOfOztDm8DXwEDpgurR77ZfKNWBukUIKTTOSdNtfRNkmBosoPyED3Sf8N2Z_l-LiILXQ8RH2_JpK9oBVpvxA308n5QWdKP3quvOalYszDlTobwwTO0Ag" alt="img" align="left" style="zoom:40%;" />
+
+
 
 #### Format 클래스
 
@@ -685,6 +780,8 @@ Calendar now = Calendar.getInstatnce();
     - 적용할 패턴 선택해 생성자 매개값으로 지정 후 객체 생성
   - 날짜 형식 : SimpleDateFormat
   - 매개변수화된 문자열 형식 : MessageFormat
+
+
 
 ##### 숫자 형식 클래스 (DecimalFormat)
 
@@ -696,6 +793,8 @@ Calendar now = Calendar.getInstatnce();
   DecimalFormat df = new DecimalFormat("#,###.0");
   String result = df.format(1234567.89);
 
+
+
 ##### 문자열 형식 클래스 (MessageFormat)
 
 ```java
@@ -706,12 +805,16 @@ String result = MessageFormat.format(message, id, name, tel);
 - 일정한 형식으로 문자열 포맷
 - 문자열 데이터가 들어갈 자리를 표시해 두고 프로그램 실행 중에 동적으로 데이터를 삽입해 문자열 완성
 
+
+
 #### java.time 패키지
 
 - 날짜와 시간을 나타내는 여러 가지 API가 새롭게 추가됨
 
 - 날짜와 시간을 표현하는 클래스
 
-  <img src="https://lh3.googleusercontent.com/N4i1ky24RJQRT_q_QH4Gw0p_EyoYZrUpEI8u46OHlb8p2C-VAwvGtWrbqMui40W1-glR0vkHHYzVAgOhg4XWE3Iz3ZpfrbVr8JRUFoB7Appsj6UqNEFOA7HcrUHcc8oRfPMx_xY" alt="img" align="left" style="zoom:50%;"/>
+  <img src="https://lh3.googleusercontent.com/N4i1ky24RJQRT_q_QH4Gw0p_EyoYZrUpEI8u46OHlb8p2C-VAwvGtWrbqMui40W1-glR0vkHHYzVAgOhg4XWE3Iz3ZpfrbVr8JRUFoB7Appsj6UqNEFOA7HcrUHcc8oRfPMx_xY" alt="img" align="left" style="zoom:40%;"/>
 
-  <img src="https://lh6.googleusercontent.com/T8oS1d3dE2hhKfbghg9hplJDWPQoEALZH6HxI6Oy6z7Y4q8l66oKkys1lNFlG2nmz2gRrmGBlR3LzX1nAJMDssc0WVajj2XQ0epBXMxd7Fo3duXNlsKCQLsZauhlB9IGcZdIYws" alt="img" align="left" style="zoom:50%;"/>
+  
+  
+  <img src="https://lh6.googleusercontent.com/T8oS1d3dE2hhKfbghg9hplJDWPQoEALZH6HxI6Oy6z7Y4q8l66oKkys1lNFlG2nmz2gRrmGBlR3LzX1nAJMDssc0WVajj2XQ0epBXMxd7Fo3duXNlsKCQLsZauhlB9IGcZdIYws" alt="img" align="left" style="zoom:40%;"/>
