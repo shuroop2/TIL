@@ -6,8 +6,6 @@
 
 > 프로그램 흐름을 제어, 코드 실행 흐름을 개발자가 원하는 방향으로 변경할 수 있도록 도와줌
 
-![제어문](C:\Users\haan0\AppData\Roaming\Typora\typora-user-images\image-20220524214132899.png)
-
 ### if 문
 
 > 조건식이 true일 때 { }안의 문장을 반복 수행할 때 사용
