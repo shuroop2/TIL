@@ -38,8 +38,6 @@
     | ALTER  | 기존에 존재하는 데이터베이스의 **객체 변경** |
     |  DROP  | 데이터베이스 및 **객체 삭제**                |
 
-    
-
 - 데이터 조작어 (DML)
 
   - 테이블의 데이터를 검색, 삽입, 수정, 삭제하는데 사용
@@ -52,8 +50,6 @@
     | DELETE | 데이터베이스 객체에서 **데이터 삭제**                  |
     | UPDATE | 기존에 존재하는 데이터베이스 객체 내의 **데이터 수정** |
     | SELECT | 데이터베이스 객체로부터 **데이터 검색**                |
-
-    
 
 - 데이터 제어어 (DCL)
 
@@ -196,7 +192,7 @@ create table 테이블명(
     - 제약조건 확인
 
       ```mysql
-    SELECT * FROM information_schema.table_constraints WHERE table_schema="스키마명" and table_name = "테이블명";
+      SELECT * FROM information_schema.table_constraints WHERE table_schema="스키마명" and table_name = "테이블명";
       ```
   
   - DEFAULT 제약조건 추가 / 삭제 / 수정
@@ -234,106 +230,3 @@ create table 테이블명(
   ```
 
   - -외래키 제약조건 검사하도록 재설정
-
-### 데이터 조작어 (DML)
-
-#### INSERT 문
-
-> 테이블에 새로운 행을 삽입하는 명령어
-
-```mysql
-INSERT INTO 테이블명 (열이름 리스트) VALUES (값리스트); -- 특정 열에 값 저장
-INSERT INTO 테이블명 VALUES (값리스트); -- 모든 열에 값 저장
--- ex
-INSERT INTO student (stdNo, stdName, stdYear, dptNo) VALUES ('2002001', '홍길동', 4, '1');
-```
-
-- 데이터 임포트
-  - CSV 파일을 읽어서 테이블 생성 및 데이터 입력
-  - 파일 임포트 시 제약조건 없어짐
-
-#### UPDATE 문
-
-> 특정 열의 값을 수정하는 명령어
-
-```mysql
-UPDATE 테이블명 SET 열=값 WHERE 조건;
-
---ex) 상품번호가 5인 행의 상품명을 'UHD TV'로 수정
-UPDATE product SET prdName='UHD TV' WHERE prdNo='5';
-```
-
-- 조건에 맞는 행을 찾아서 열의 값 수정
-
-#### DELETE 문
-
-> 테이블에 있는 기존 행을 삭제하는 명령어
-
-```mysql
-DELETE FROM 테이블명 WHERE 조건; -- 조건에 맞는 행 삭제
-DELETE FROM 테이블명; -- 모든 행 삭제
-
---ex) 상품명이 '그늘막 텐트'인 행 삭제
-DELETE FROM product WHERE prdName='그늘막 텐트';
-```
-
-#### SELECT 문
-
-> 테이블에서 조건에 맞는 행 검색
-
-```MYSQL
-SELECT [ALL|DISTINCT] 열이름 리스트 FROM 테이블명 
-[WHERE 검색조건(들)]
-[GROUP BY 열이름]
-[HAVAING 검색조건(들)]
-[ORDER BY 열이름 [ASC|DESC]]
-```
-
-| 기능            | 설명                                                         |
-| --------------- | ------------------------------------------------------------ |
-| SELECT 열이름   | 검색할 열 기술                                               |
-| FROM 테이블명   | 데이터를 검색할 테이블명 기술                                |
-| WHERE 조건      | 질의 결과에 포함될 행들이 만족해야 할 조건 기술              |
-| ODER BY 열이름  | 특정 열의 값을 기준으로 질의 결과 정렬<br>ASC : 오름차순, DESC : 내림차순 |
-| GROUP BY 열이름 | 그룹 질의를 기술할 때 사용<br />특정 열로 그룹화한 후 각 그룹에 대해 한 행씩 질의 결과 생성 |
-| HAVING 조건     | GROUP BY 절에 의해 구성된 그룹들에 대해 적용할 조건 기술     |
-
-```mysql
--- 도서(book) 테이블에서 모든 행 검색하여 반환
--- 모든(*) 열 포함
-SELECT * FROM book;
-
--- 도서(book) 테이블에서 모든 행을 검색하여 도서명과 가격만 반환
-SELECT bookName, bookPrice FROM book;
-
--- 도서(book) 테이블에서 가격이 30000이상인 행을 검색하여 도서명과 가격만 반환
-SELECT bookName, bookPrice FROM book WHERE bookPrice >= 30000;
-```
-
-- 중복 제거
-  - `*`모든 열 출력
-  - DISTINCT
-    - 속성값이 중복되는 것이 있으면 한 번만 출력
-
-- WHERE 조건
-
-  <img src="https://lh6.googleusercontent.com/7eqbx8MGB1EQSeFOyWoTqA9FcUINvfHBfL6B41grM1O-y5TWg7iJiFsrFLxjz3UlwQ5tEB2CLMgM5NUhzJttowjCuoQ99XCG8Gm-myu8Lip0LBVRTA3oeUzkBtg0kbHQMc8tMEA" alt="img" style="zoom:50%;" />
-
-- 패턴 매칭 (LIKE)
-
-  | 와일드카드 문자 |               설명               |     예     |
-  | :-------------: | :------------------------------: | :--------: |
-  |        %        |  0개 이상의 문자를 가진 문자열   | LIKE '홍%' |
-  |        _        | 단일 문자(수 만큼의 문자로 구성) | LIKE '__'  |
-
-  | 문자열 연산 예 | 설명                                                       |
-  | -------------- | ---------------------------------------------------------- |
-  | '홍%'          | '홍'으로 시작하는 문자열 검색                              |
-  | '%길%'         | '길을 포함하는 문자열 ('길' 앞, 뒤에 아무 문자나 와도 됨') |
-  | '%동'          | '동'으로 끝나는 문자열                                     |
-  | '____'         | 4개의 문자로 구성된 문자열(밑줄문자 1개가 문자 1개를 의미) |
-
-
-
-
-
