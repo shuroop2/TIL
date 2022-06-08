@@ -1,6 +1,6 @@
 # TIL_Day_18
 
-> 2022년 06월 07일
+> 2022년 06월 08일
 
 ## 데이터베이스 표준 질의어 SQL
 
@@ -301,6 +301,11 @@ SELECT bookName, bookPrice FROM book WHERE bookPrice >= 30000;
 
   - 서브 쿼리 결과 값이 여러 행
   - IN, ANY, ALL, EXISTS 연산자 사용
+  - 단일 행 서브 쿼리처럼 결과가 1개이어도 IN을 쓰면 오류가 없기 때문에 서브 쿼리를 쓸 때 항상 IN을 쓰면 됨
+
+- 중첩 서브 쿼리
+
+  - 한 번의 서브 쿼리로 원하는 결과를 찾지 못할 때 중첩해서 사용 가능
 
 - 서브 쿼리 연산자
 
@@ -327,3 +332,102 @@ SELECT bookName, bookPrice FROM book WHERE bookPrice >= 30000;
   - 15행을 검색한 결과를 가지고 3행에서 검색
     - 총 15 + 3 = 18행 검색
   - 경우에 따라 조인보다 성능이 더 좋을 수 있지만, 대량의 데이터에서 서브 쿼리를 수행할 때 성능이 더 나쁠 수 있음
+
+##### 다중 행 서브 쿼리
+
+- IN / NOT IN
+  - 서브 쿼리에서 조건에 해당되는 행의 열을 비교하여 값 확인
+  - 서브 쿼리의 결과 값을 메인 쿼리에 대입하여 조건 비교 후 결과 출력
+  - IN 쿼리 -> 메인 쿼리
+  - 서브 쿼리 결과에 NULL값은 제외하고 공백은 포함
+- EXISTS / NOT EXISTS
+  - 서브 쿼리에서 조건에 해당되는 행의 존재 여부만 확인(TRUE/FALSE 반환)
+  - 따라서 IN에 비해 성능 좋음
+  - EXISTS 키워드 앞에 속성명, 수식 등 올 수 없음
+  - WHERE 절에 외래키 제약조건 지정
+  - 서브 쿼리의 결과가 행을 반환하면 참이 되는 연산자
+  - IN과 달리 서브 쿼리 결과에 NULL값 포함
+- ALL / ANY, SOME 
+  - 관계 연산자 뒤에 위치
+  - ALL
+    - 검색 조건이 서브 쿼리의 결과의 모든 값에 만족하면 참이 되는 연산자
+    - 조건 > ALL (서브 쿼리 결과)
+  - ANY, SOME
+    - 검색 조건이 서브 쿼리의 결과 중에서 하나 이상 만족하면 참이 되는 연산자
+    - 조건 > ANY (서브 쿼리 결과)
+
+##### 서브 쿼리 유형
+
+| 명칭             | 사용 위치     | 영문 및 동의어                        | 설명                                                |
+| ---------------- | ------------- | ------------------------------------- | --------------------------------------------------- |
+| 스칼라 서브 쿼리 | **SELECT 절** | Scalar Subquery<br>열이름 위치에 표기 | **단일 열** 반환                                    |
+| 인라인 뷰        | **FROM 절**   | Inline View<br>테이블명 위치에 표기   | 결과를 뷰 형태로 반환(가상 테이블)                  |
+| 중첩 서브 쿼리   | **WHERE 절**  | Nested Subquery                       | 술어와 같이 사용<br>**결과를 한정**시키기 위해 사용 |
+
+- 스칼라 서브 쿼리 (Scalar Subquery)
+
+  - SELECT 절에서 사용
+
+  - 결과 값을 단일 열의 스칼라 값으로 반환
+
+  - 스칼라 값이 들어갈 수 있는 모든 곳에서 사용 가능
+
+  - 일반적으로 SELECT 문과 UPDATE 문에서 사용
+
+    <img src="https://lh3.googleusercontent.com/b7aflEYhaSIKa60IT9qy3lyTfLA9i-sAo_BCBiD_spXffFhR99U10TeNbfbz2DOH13XnGN_ZpAyLNCiHlt6MSgQ3Zkn6KyRYF9qVpcs7ko2dSW5E5KHhQn7Gsqi_wjOApHTCagI" alt="img" style="zoom:50%;"/>
+
+- 인라인 뷰 (Inline View)
+
+  - FROM 절에서 사용
+
+  - 테이블명 대신 인라인 뷰 서브 쿼리 결과 (가상 테이블) 사용
+
+  - 쿼리 결과로 반환되는 데이터는 다중 행, 다중 열이어도 상관 없음
+
+  - 가상의 뷰 형태로 제공
+
+  - 개발 중에 뷰가 필요한 모든 경우에 뷰를 생성하면 관리할 양이 너무 많아 트랜잭션 관리나 성능에 문제 발생할 수 있는 경우에 인라인 뷰 사용
+
+    <img src="https://lh6.googleusercontent.com/ieh8jHjLFsBfcAZvEu-TCrI7NwIyy7MxUsFyYbFcpajAVDlSgaZPH6NJHFJ8VM84EeDt_qai64L-wO71h8RS9bUbvitNgc6qXOFYgVPskbyxii2i8K5TJLmNO9mqlpBY91kmjik" alt="img" style="zoom:50%;" />
+
+#### MySQL 내장 함수
+
+- 수학 함수
+  - ROUND()
+    - 자릿수가 양수이면 소수점 오른쪽을 나타내고, 음수이면 소수점 왼쪽을 나타냄
+  - RANK()
+    - 값의 순위 반환 (동일 순위 개수만큼 증가)
+  - DENSE_RANK()
+    - 값의 순위 반환 (동일 순위 상관 없이 1 증가)
+  - ROW_NUMBER()
+    - 행의 순위 반환
+- 문자 함수
+  - REPLACE()
+    - 문자열을 치환하는 함수
+  - CHAR_LENGTH()
+    - 글자의 수를 반환하는 함수
+  - LENGTH()
+    - 바이트 수 반환하는 함수
+  - SUBSTR()
+    - 지정한 길이만큼의 문자열을 반환하는 함수
+- 날짜 함수
+  - DATE()
+    - 지정한 날의 날짜를 반환
+  - NOW()
+    - 현재의 날짜, 시간 모두 반환
+  - TIME()
+    - 지정한 시점의 시간을 반환
+  - YEAR() / MONTH() / HOUR() / MINUTE() / SECOND()
+  - DATEDIFF()
+- LOAD_FILE()
+  - TXT 파일
+  - JPG 파일
+  - MP4 파일
+
+#### 테이블 복사
+
+```mysql
+CREATE TABLE 새 테이블명 AS SELECT 복사할 열 FROM 원본 테이블명 [WHERE 절]
+```
+
+- 주의 : 기본 키 제약조건은 복사 안되니 복사 후 기본키 제약조건 설정해야 함
