@@ -165,7 +165,7 @@
        - `<!-- -->`
    - 텍스트 형태 (장식 효과)
      - <img src="https://lh6.googleusercontent.com/FadKsAb-cc-bLw_Gt43H796JYprFKVysR00lh1cDEGm2wJjSeDDtm_c_8Yur5ZyUHQtrBHEJ2V3TfV8vRjgjjMB0NYit6XpyV3zrokN4CuMRg4ufQMxqxbC6ltIBovCWSNsDFAQ" alt="img" style="zoom:50%;" />
-     - `<pr></pre>` 태그
+     - `<pre></pre>` 태그
        - 입력한 형태 그대로 출력
      - `&nbsp;`
        - 공백 처리 특수 문자 (no break space)
