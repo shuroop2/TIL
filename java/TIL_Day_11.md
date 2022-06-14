@@ -411,7 +411,7 @@ StringTokenizer st = new StringTokenizer("문자열", "구분자");
 - String은 내부의 문자열 수정 불가
 - 대치된 새로운 문자열 리턴
 
-#### StrinBuffer, StringBuilder 클래스
+#### StringBuffer, StringBuilder 클래스
 
 > 버퍼에 문자열 저장
 
