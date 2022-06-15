@@ -237,7 +237,41 @@
    - 동적(반응) 선택자
 
      - 선택자 : active - 마우스로 클릭한 태그 선택
-     - 선택자 : hover - 마우스를 올린 태그 선택
+     - 선택자 : hover - 마우스를 올린 태그 선택\
+
+### CSS 단위
+
+- 키워드 단위
+  - 키워드에 해당되는 스타일 자동 적용
+- 크기 단위
+  - %
+    - 기본으로 설정된 크기를 기준으로 상대적인 크기를 지정
+    - 0%가 초기에 설정된 크기임
+  - em
+    - 배수를 나타내는 단위
+    - 1배 = 1em = 100%
+    - 1.5배 = 1.5em = 150%
+  - px
+    - 크기를 절대적으로 지정 (픽셀)
+    - font-size인 경우 px 또는 pt 다 사용 가능
+- 색상 단위
+  - RGB
+    - 3가지 색상을 조합해서 색상 표현
+    - 0 ~ 255 숫자 입력
+  - RGBA
+    - RGB 색상 단위에 알파값을 추가한 형태
+    - 알파값 : 투명도를 나타내며 0.0 ~ 1.0 숫자 입력
+    - 0.0 : 완전 투명 상태
+    - 1.0 : 완전 불투명 상태
+  - HEX 코드 단위
+    - RGB 색상 단위를 간단하게 표시하는 방법
+    - 색상을 16진수로 표현
+    - 각 색상 요소에 00부터 FF 사이의 값 입력
+    - #ff0000, #00ff00, #0000ff, #333333
+    - #000, #fff, #777
+  - URL 단위
+    - 이미지나 글꼴 파일을 불러올 때 사용
+    - <img src="https://lh3.googleusercontent.com/f4nCLGrtTYMN13bWUdeKahTLE8JI3fI7myM_y0Bc4K89hRvNeTfEhYcSF8gay9fanpfrDL3wdJQ1Dej6wGamTWPheIMwsdKj_uv9bc9ZnVWKVTyUkaZzLfZBkHs1xx-omjXNBWY" alt="img" style="zoom:50%;" />
 
 
 
@@ -266,6 +300,27 @@
 ### 여백 속성 (padding / margin)
 
 <img src="https://lh6.googleusercontent.com/ts7CjGvP_ojUlPULYmQ7_ND-9yzUe9Hf79oYD4LZY4hAV-KFQU8ThtYD0hVvBA9sHUv8t_jnrvYEsTWQoNJWrZzjAbG0sybJEZombPU94r5UHQzqE5m56-jED6R2z7Osl6sFTOI" alt="img" style="zoom:50%;" />
+
+- 가운데 정렬
+
+  - align-center.html
+
+  - 컨테이너 태그 자신을 가운데 정렬
+
+    - ```css
+      margin:0 auto; width:400px;
+
+  - 안에 포함된 내용을 가운데 정렬 
+
+    - ```css
+      text-align:center;
+
+  - 주의! `<table>` 태그인 경우
+
+    - ```css
+      margin:0 auto; width:400px;
+
+  - `margin:0 auto;` 사용할 경우 width 속성값이 있어야 함
 
 ### Display 속성
 
@@ -357,3 +412,28 @@
 - visibility 속성
   - hidden : 숨김 (안 보임)
   - visible : 보임
+
+### 그림자 속성
+
+- 이미지 등의 요소에 그림자 표시
+
+- ```css
+  box-shadow: none | x-position y-position blur spread color | inset | initial | inherit
+
+- none : 그림자 효과를 없음
+
+- x-position : 가로 위치. 양수면 오른쪽, 음수면 왼쪽. (필수)
+
+- y-position : 세로 위치. 양수면 아래쪽, 음수면 위쪽. (필수)
+
+- blur : 그림자를 흐릿하게 만듦. 값이 클 수록 더욱 흐려짐.
+
+- spread : 양수면 그림자를 확장하고, 음수면 축소
+
+- color : 그림자 색상 지정
+
+- inset : 그림자를 요소의 안쪽에 만듦
+
+- initial : 기본값으로 설정
+
+- inherit : 부모 요소의 속성값을 상속받음
