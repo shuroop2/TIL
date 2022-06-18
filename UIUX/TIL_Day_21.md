@@ -445,16 +445,19 @@
 
 9. 공간 분할 태그 (HTML5 시멘틱 구조 태그)
 
-   - `<div>`
+   - `<div>` 태그
 
      - block 형식으로 공간 분할
+     - `<div>` 중첩 사용
+       - ![image-20220617204738683](TIL_Day_21.assets/image-20220617204738683.png)
 
-   - `<span>`
+   - `<span>` 태그
 
      - inline 형식으로 공간 분할
-
+     - ![image-20220617204554660](TIL_Day_21.assets/image-20220617204554660.png)
+   
    - HTML5 시멘틱 구조 태그
-
+   
      - 시멘틱 (Semantic)
      - 의미의, 의미론적인
      - 역할과 기능에 맞는 요소로 영역 구분
@@ -465,17 +468,17 @@
        - `<section>` : 콘텐츠 (내용)
        - `<article>` : 콘텐츠 안의 내용 영역 구분
        - `<footer>` : 푸터 (주소/연락처/저작권/기업 정보 등)
-
+   
    - HTML5 웹 표준 문서 구조
-
+   
      <img src="https://lh3.googleusercontent.com/wgozwkFVIYrcGD4-WY09M85d7lYVGrmz8h4c-JUKv2p7Kd743flAy9n7t8akLKajr2ta_H40BmWlDL1mnv7kBCMgbS5qGoW3PElwPomxhqIM5x8xWToZQwR3VCnE8YQpvVfxhWY" alt="img" style="zoom:50%;" />
-
+   
    - HTML5 시멘틱 구조의 특징
-
+   
      - HTML4로 만든 웹 문서의 결과 화면이나 HTML5로 만든 웹 문서의 결과 화면만 보면 웹 브라우저에 보이는 모습은 동일하지만 실제로 웹 브라우저에서 문서를 처리할 때 큰 차이
-
+   
    - HTML5 시멘틱 구조의 장점
-
+   
      - 소스만으로도 문서 내용 쉽게 이해
      - 편리한 검색
        - 사이트 검색 시 필요한 내용을 정확하게 찾을 수 있어 편리
@@ -484,3 +487,4 @@
        - 시각 장애인들이 웹 보조 기구로 사용하는 화면 판독기에서 시멘틱 태그를 통해 제목과 내용을 구별하여 사용자에게 정확한 내용 전달 가능
      - 다양한 장치에 통일된 결과 제공
        - 태그에 역할이 정해졌기 때문에 어떤 장치에서든 동일하게 문서 해독 가능
+       - ![image-20220617204515257](TIL_Day_21.assets/image-20220617204515257.png)
