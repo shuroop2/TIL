@@ -217,7 +217,7 @@
 
    - 기본 목록 : `<ul>` `<ol>` `<li>`
 
-     - <img src="https://lh5.googleusercontent.com/wMsZeA312cXKXP8qcPhiKxSIx2075mBxhW45jvIsDFb4tqzWrBWcKa1nwDm-znvnatBxlgVMNq8oH9C3XmAlNQHAXLoUSERx_bIAT1s3WdwEDw2nWTGPiOowYdAWm7TCjiYWNQ0" alt="img" style="zoom:50%;" />
+     - <img src="https://lh5.googleusercontent.com/wMsZeA312cXKXP8qcPhiKxSIx2075mBxhW45jvIsDFb4tqzWrBWcKa1nwDm-znvnatBxlgVMNq8oH9C3XmAlNQHAXLoUSERx_bIAT1s3WdwEDw2nWTGPiOowYdAWm7TCjiYWNQ0" alt="img" align="left" style="zoom:50%;" />
 
      - 순서가 없는 목록 `<ul>` 태그 속성
 
