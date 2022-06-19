@@ -58,8 +58,8 @@
 - ```html
   <태그 class="bs_class1 bs_class2 ...">
   <!-- 예시 -->
-  <button type=”button” class=”btn btn-primary”>
-  <div class=”container bg-primary text-white”>
+  <button type="button" class="btn btn-primary">
+  <div class="container bg-primary text-white">
   ```
 
 #### Layout
@@ -118,7 +118,7 @@
 
 - 버튼으로 사용할 수 있는 요소들에 class="btn" 적용
 
-- ```html
+- ```css
   <a>, <button>, <input type="button">
   <input type="submit">, <input type="reset">
   class="btn" <!-- 기본 -->
