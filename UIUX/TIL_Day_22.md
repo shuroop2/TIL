@@ -376,8 +376,19 @@
   - 브라우저 화면을 기준으로 고정 위치에 배치
 
   - 지정된 위치에 고정 배치
+  
   - 스크롤 시 고정되어 있음
-  - <img src="https://lh4.googleusercontent.com/rH8TcQj_8FisQPwPuVLRcCa94TtdS6K9rPWpxh9ahjCv10MWKZ05rvn60LK2NBeJMKdnnlFDwmtKd8syn_Omk9r8xr9L90ruk3Lwum1-ZVCfIHXAYvmOqNCV37R-5KjOMJehoAg" alt="img" align="left" style="zoom:50%;" />
+  
+  - ```css
+    #fixedBox {
+    	position:fixed;
+        width:50px;
+        height:50px;
+        background:blue;
+        top:50px; /* 고정 위치 */
+        left:50px /* 고정 위치 */
+    }
+    ```
 
 ### 레이어(겹침) 표현 속성
 
