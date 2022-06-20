@@ -265,3 +265,125 @@ var 변수명 = function(매개변수) {...};
     - <img src="https://lh3.googleusercontent.com/52Z37b9vc00f3n-R9BSp3Q48_ThJ-3cd9kfD8CTwU1qp6xlDTVIJMjNglQmGB6iYWugdbelCjYqD4DggC2MsSS-OA066NVLWNwcesdqstUX-_jLTKHBULMNbn4oGVOUtCxXQXr0" alt="img" style="zoom:50%;" />
 
 - Screen : 화면의 해상도, 색상, 크기에 관한 정보를 제공하는 객체
+
+#### 브라우저 객체 모델 (Browser Object Model)
+
+> 웹 브라우저를 대상으로 이루어진 객체
+
+- 자바스크립트에서는 웹 페이지를 구성하는 HTML 태그의 모든 요소와 웹 브라우저를 구성하는 요소들을 객체로 정의하여 제공
+- 객체들을 계층구조로 분류
+  - window : 창
+  - document : 문서
+  - history : 웹 브라우저 기록 정보
+  - location : 주소 정보
+  - navigator : 웹 브라우저의 종류 정보
+  - <img src="https://lh6.googleusercontent.com/IRiQKH--tMcE9jHN7q2RnvMIZxCwsB-2yBv94S4sdQXhDn3aXnDxkbzRst2CY2vzsZQzFkrFfhnMYm7T2HddiX8AW7vQ1zo2SVEJ2kF6uLdAWvVyxjKghEcDvoudoGAncI9F_l0" alt="img" style="zoom:50%;" />
+
+##### window 객체
+
+> 창에 대한 전반적인 상황을 제어하는 최상위 객체
+
+- 자바스크립트에서 사용되는 모든 객체는 window 객체의 하위에 존재
+
+- Navigator 객체만 제외하고 모든 객체는 window 객체를 통해서 접근하여 사용
+
+- 그러나 사용시 window는 생략 가능
+
+  - ```javascript
+    window.document.pic.src = "a.jpg";
+    document.pic.src = "a.jpg";
+    ```
+
+- window 객체 주요 속성
+
+  - <img src="https://lh3.googleusercontent.com/Cw7EZeH0LKa2hFMiQDyku-mr41Ae3syk0SoT3B2gWzmtP3cUfdKzJItj8F_DBnP-rEi7rBZRQiH7PN5oi166oLAvLB4lpEyybvT30njuZ-DSakf6EolEMSnycJFWmPsIe0zlTak" alt="img" align=left style="zoom:50%;" />
+
+- window 객체 주요 메소드
+
+  - <img src="https://lh4.googleusercontent.com/NdvL5IJC72QI-oEIVZAgPwbYQ1qOnhTq8ahrZ1iextZ5G2szG2TZtH3d8kbPmnlzcYzdzV_yw1WG-gKu23BrhirBfsYgiX8ALoqs2FKfg4mlhZvwfWO7hKnoQf7NXW1__Nxf8zA" alt="img" align=left style="zoom:50%;" />
+
+  - open() 메소드
+
+    - window.open("URL", "창이름", "창 속성");
+
+      - 새로운 창을 만들거나 기존 창을 열어서 화면에 출력하는 기능
+
+      - URL : 웹페이지 주소 및 HTML 파일명
+
+        - 파일명이 없으면 새로 만들고, 있으면 기존 파일 열기
+
+      - 창이름 : 새로 만들어지는 창 이름
+
+      - 창 속성 : 창의 모양이나 특징
+
+      - ```javascript
+        window.open("test.html", "test", "width=200, height=200, status=yes, scrollbars=yes, resizable=yes"); // test.html 문서를 새창에서 열기
+        window.open("", "test", "width=400, height=200"); // 새로운 창 만들어서 열기
+        ```
+
+  - setTimeout()
+
+    - 타이머 설정과 해제
+
+    - setTime('호출함수', 지연시간)
+
+      - 시간 설정
+
+      - 일정 시간이 지난 후에 호출함수를 1번만 실행
+
+      - ```javascript
+        setTimeout('winClose()', 1000); // 1초 후에 winClose() 함수 호출
+        ```
+
+    - clearTimeout(타이머ID)
+
+      - 시간 설정한 것 해체
+
+      - setTimeout() 메소드가 반환하는 타이머 ID를 받아서 타이머 ID에 해당되는 타이머 설정 해제
+
+      - ```javascript
+        타이머ID = setTime('호출함수', 지연시간);
+        clearTimeout(타이머ID);
+        ```
+
+  - setInterval()
+
+    - 타이머 설정과 해제
+
+    - setInterval('호출함수', 지연시간)
+
+      - 일정 시간 간격 안에 반복 실행
+
+      - ```javascript
+        setInterval('showTime()', 1000); // 1초 간격으로 showTime() 함수 호출
+        ```
+
+    - clearInterval(타이머ID)
+
+      - 시간 설정한 것 해제
+
+      - ```javascript
+        타이머ID = setInterval('showTime()', 1000);
+        clearInterval(타이머ID);
+        ```
+
+##### history 객체
+
+> 최근 방문한 주소에 관한 정보를 기억하고 있는 객체
+
+- history 객체 주요 메소드
+  - back() : 이전에 열었던 페이지로 이동
+  - forward() : 이전 페이지로 이동 후 다시 앞으로 이동
+  - go() : 몇 단계 뒤에 있는 페이지로 이동
+    - go(3) : 3단계 앞의 페이지로 이동
+    - go(-2) : 2단계 다음 페이지로 이동
+
+##### location 객체
+
+> 현재 브라우저의 주소창에 표시된 주소값에 관련된 내용을 다루는 객체
+
+- location 객체 주요 메소드
+  - <img src="https://lh6.googleusercontent.com/aOb473FKfwdrtRE_HnismykNG9HNBt8vYDvqfeqBJf6FXaYUo_3J0FUKwuCcfn9l3Cpkw1V0RD_BGG20o5USJG-o261PwzxGMlzJSqwf5o0EM9iF_m9wS0PZekuI8eChjxVOhiw" alt="img" align="left" style="zoom:50%;" />
+
+
+
