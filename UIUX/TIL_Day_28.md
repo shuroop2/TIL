@@ -79,7 +79,7 @@
   - window.onload = function()
     - DOM 요소 뿐 아니라 외부 리소스, 이미지, 사운드 등 모든 콘텐츠의 로드가 끝나는 시점에서 이벤트가 발생하면서 호출
 
-### jQuery 선택자 (selector)
+#### jQuery 선택자 (selector)
 
 - jQuery 코드는 선택자와 메소드의 조합으로 구성되는 경우가 많음
 
@@ -202,8 +202,11 @@
 #### jQuery DOM 요소 조작
 
 - 동적으로 DOM 요소 조작
+
 - jQuery를 이용하면 쉽고 간단하게 조작 가능
+
 - DOM 요소 삽입 / 삭제 / 속성 추가 및 삭제
+
 - DOM 요소 관련 주요 메소드 (삽입/삭제 관련)
   - <img src="https://lh5.googleusercontent.com/sLC2cPI1wC8ab0lmRGKz8ZwbLhV9TX0M9mBl7XsmraYqlvYEU2vwUT7jH94dLXojreNkrOVW7crD34wE-1Lfb9IERw2tpXhmmQgBaPdaOudr0Huq0GIekWZFBMblPKxd25GnZAE" alt="img" style="zoom:50%;" />
   - text()와 html() 메소드
@@ -213,8 +216,80 @@
       - HTML 태그 인식 (태그 효과 적용)
     - text()
       - HTML 태그 인식하지 못하고 글자로 인식
+  
 - DOM 요소의 속성 추가 및 삭제
-  - attr(속성명, 값) : 속성 추가 (prop())
-  - removeAttr(속성명) : 속성 제거
-  - attr() : 속성 설정, 조회
-  - prop() : 활성화, 체크, 선택여부 등 동적 적용
+  - ```javascript
+    attr(속성명, 값); // 속성 추가 (prop())
+    removeAttr(속성명); // 속성 제거
+    attr(); // 속성 설정, 조회
+    prop(); // 활성화, 체크, 선택여부 등 동적 적용
+  
+- DOM 요소에 CSS 효과 동적 적용
+
+  - CSS 클래스 선택자에 적용된 여러 효과를 동적으로 추가하거나 삭제
+
+  - ```javascript
+    <style>
+    	.h1Css {...}
+    </style>
+    
+    addClass('클래스명'); // CSS 효과 적용
+    removeClass('클래스명'); // 적용된 CSS 효과 해제
+    toggleClass('클래스명'); // addClass()와 removeClass()를 번갈아 가면서 실행하는 결과
+    ```
+
+#### jQuery 효과
+
+##### jQuery로 가능한 시각적 효과
+
+- 공통 인수
+  - duration : 효과 진행 속도 (slow / normal / fast)
+  - callback (function()) : 효과 완료 후 수행할 함수
+  - easing : 전체 애니메이션의 적용 시간 비율을 원하는 진행 비율로 매핑
+    - swing : 사인 곡선 (느리게 시작해서 빠르게 진행되다가 나중에 다시 느려지는 효과)
+    - linear : 선형 (일정한 속도로 진행)
+    - <img src="https://lh3.googleusercontent.com/KdpcMLowf4LByH5t6Dzgj1DTwte82A0E3Ib4YGPjXq3eX-bcfzZGHoUkqV8ZZCAeRN6aZn9NH9q5lroXLrb2i1DDlfGmlVA2GNnAXKDpB4hArAG5XmnH4mBoVTCZmdcI80Bkk-U" alt="img" align=left style="zoom:50%;" />
+
+- Basic 효과
+  - hide() : 요소 숨기기
+  - show() : 요소 표시
+  - toggle() : 요소를 숨기거나 표시를 교대로 실행
+    - show() / hide() 교대로 실행
+- Sliding 효과
+  - slideDown() : 요소를 슬라이딩 효과로 나타나게 함
+  - slideUp() : 요소를 슬라이딩 효과로 숨김
+  - slideToggle() : 요소를 슬라이딩 효과로 숨기거나 표시를 교대로 실행
+  - 주의할 점
+    - 슬라이딩 효과는 `<div>` 박스에 적용
+    - 이미지에 슬라이딩 효과를 주면 전체적으로 축소/확대 되면서 사라졌다가 보여짐
+    - <img src="https://lh3.googleusercontent.com/Yae66ewystgLHfzkjMn0puoxvig9KImozUFTay6SK8BzlaIW5BZRp6V8VvxY08KnCW87xnt9-JxS6bFvMHzKiuBL_mKrzv80RgGmcbB2_uLfwrIER0FEEbkJufS0B2vvjLkz49Q" alt="img" style="zoom:50%;" />
+- Fading 효과
+  - fadeIn() : 요소를 선명하게 만들면서 나타남
+  - fadeOut() : 요소를 흐리게 하면서 숨김 (영역도 사라짐)
+  - fadeToggle() : fadeIn() / fadeOut() 교대로 실행
+  - fadeTo() : 요소의 불투명도 조정
+    - 투명도 0으로 안보여도 영역은 그대로 남아 있음
+- Animate 효과
+  - animate(속성) : 사용자 CSS 효과를 지정하여 애니메이션 수행
+    - animate() 형식1
+      - <img src="https://lh5.googleusercontent.com/W5hTg5wxuTmjFYtI9JzGiMhW-wapn1kgWLy2JKeaKTst-CgXMMOlqCnW8jxmpTjykcGXLduBK15mvMgC6oa1oYw1v6uFYLeAtdodIKs4btd1Nt1jtA6iR1T4GFQjDPudGWRclDg" alt="img" style="zoom:50%;" />
+    - animate() 형식2
+      - <img src="https://lh6.googleusercontent.com/WWuCsiCkdu7FYvqEXIrBxIwAOxeuWjTxjiLPspZta-ZjHpjaw5oGdjv8f920jDlWNiRkdvrQkBnDQow9vDGIoMjkvpnRbbaFkBuvWZ7wSUlrSDeT8HKZVxoEUS9nRySawb94Zjw" alt="img" style="zoom:50%;" />
+  - 애니메이션 정지
+    - $(선택자).stop(); // false 입력한 것으로 간주
+    - $(선택자).stop(true); // clearQueue 수행
+    - $(선택자).stop(true, true);
+      - clearQueue, goToEnd 수행
+  - clearQueue
+    - 대기열에 있는 함수 모두 제거
+    - 예약된 애니메이션 초기화 
+    - clearQueue() 메소드 실행 효과
+  - goToEnd
+    - 제자리에서 멈추는 것이 아니라 지정한 최종 형태에서 멈춤 (애니메이션 진행 중간에 멈추는 것이 아니라 마지막까지 수행되고 멈춤)
+
+##### 참고
+
+- display:none;
+  - 안 보이고 차지하는 영역 없음
+- visibility:hidden;
+  - 영역은 있고 안 보일 뿐
