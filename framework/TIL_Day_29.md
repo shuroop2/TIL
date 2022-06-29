@@ -320,3 +320,127 @@
 - 전송 데이터 길이 : 용량이 무제한
 - 서블릿에서는 doPost() 메소드 이용해서 데이터 처리GET 방식보다 느림
 
+#### 주의할 점
+
+- 폼에 입력되어 서버로 전송되는 값들은 모두 문자열로 전송 (연산이 필요한 경우 숫자로 형변환 필요)
+- 1개의 값을 받을 경우 : getParameter() 메소드 사용
+- 여러 개의 값을 받을 경우 (동일한 name 값이 여러 개인 경우 : checkbox name이 다 동일한 경우)
+  - getParameterValues() 메소드 사용
+  - 반환되는 값이 배열이므로 배열 처리해서 사용
+- 참고
+  - 라디오버튼인 경우 한 그룹의 라디오 버튼 이름이 다 동일해도 1개의 값만 전송되므로 getParameter() 메소드 사용
+
+#### 서블릿 응답 처리
+
+##### 서블릿의 응답 처리 방법
+
+- doGet()이나 doPost() 메소드 안에서 처리함
+
+- javax.servlet.http.HttpServletResponse 객체를 이용함
+
+- 클라이언트에게 전송할 데이터 타입 인코딩
+
+  - resonpse.setContextType("text/html;charset=utf-8");
+  - MIME-TYPE
+    - HTML로 전송 시 : text/html
+    - 일반 텍스트로 전송 시 : text/plain
+    - XML 데이터로 전송 시 : application/xml
+
+- 클라이언트(웹 브라우저)와 서블릿의 통신은 자바 I/O의 스트림 이용
+
+  - PrintWriter 클래스 사용
+
+    - ```java
+      PrintWriter out = response.getWriter();
+      out.print(data); // 웹 브라우저로 보내는 데이터
+      ```
+
+##### 서블릿의 응답 처리 순서
+
+<img src="https://lh5.googleusercontent.com/vyvj0mCqZ1-PtUzz1j7M4U_eOFY6TJxMi3egVrDjfMsJVFpesEixuCjZ9Os_G-ffqmOgq2elyeKbZuuJ92AO9Ndw7aP681KekL8EoYH8bLk72c-m-lFUFWVov79OuGtKwKuPeiQ" alt="img" style="zoom:50%;" />
+
+#### doGet() / doPost() 방식 둘 다 처리
+
+- 일반적으로 doHandle() 또는 doProcess() 메소드를 새로 추가해서 doGet() / doPost() 방식 둘 다 처리
+- doGet() 또는 doPost() 방식으로 요청이 들어오면 doGet() 또는 doPost() 메소드에서 doHandle() 호출하고 request와 response 객체 전달
+- doHandle() 메소드에서 처리
+
+#### 서블릿에 요청 방법
+
+1. 자바스크립트로 서블릿에 요청 
+
+   - DOM 사용
+
+   - name 속성 사용
+
+2. jQuery 사용해서 서블릿에 요청
+
+#### 서블릿 포워딩
+
+- 포워딩
+  - 서블릿에서 다른 서블릿이나 JSP 페이지로 요청을 전달하는 기능
+- 포워딩 용도
+  - 요청에 대한 추가 작업을 다른 서블릿에서 수행
+  - 요청에 포함된 정보를 다를 서블릿이나 JSP 페이지와 공유
+  - 요청에 정보를 포함시켜 다른 서블릿으로 전달
+  - 컨트롤러에서 뷰로 데이터 전달
+- 서블릿에서 포워딩 방법 4가지
+  1. redirect 방법
+     - 웹 브라우저에 재요청하는 방식
+     - HttpServletResponse 객체의 sendRedirect() 메소드 이용
+     - 형식 : sendRedirect("포워드할 서블릿 또는 JSP");
+  2. Refresh 방법
+     - 웹 브라우저에게 재요청하는 방식
+     - HttpServletResponse 객체의 addHeader() 메소드 이용
+     - 형식 : addHeader(“Refresh”, “경과시간(초);url=요청할 서블릿 또는 JSP”);
+  3. location 방법
+     - 자바스크립트에서 재요청하는 방식
+     - 자바스크립트의 location 객체의 href 속성 이용
+     - 형식 : location.href = “요청할 서블릿 또는 JSP”;
+  4. dispatch 방법
+     - 서블릿이 직접 요청하는 방식 (일반적으로 포워딩 기능 지칭)
+     - RequestDipatcher dis = request.getRequestDispatcher(“포워드할 서블릿 또는 JSP);
+     - dis.forward(request, response);
+- 포워딩 방법들의 차이점
+  - redirect, Refresh, location 방법
+    - 서블릿이 웹 브라우저를 거쳐서 다른 서블릿이나 JSP에게 요청하는 방법
+  - dispatch 방법
+    - 클라이언트를 거치지 않고 서블릿에서 바로 다른 서블릿에게 요청하는 방법
+    - url이 바뀌지 않음 (즉, 클라이언트 측에서는 포워드가 진행되었는지 알 수 없음)
+
+- 포워딩 하면서 데이터 전달
+  - response.sendRedirect(“second04?name=kim”);
+  - String name = request.getParameter(“name”);
+    - FirstServlet04.java : /first04
+    - SecondServlet04 : /second04
+  - 실행은 FirstServlet04.java
+    1. 값 지정해서 전달
+    2. 변수 사용 : 변수값이 전달되도록
+    3. 한글 인코딩 : URLEncoder.encode() 사용
+
+#### 바인딩
+
+- 수십 개 또는 많은 양의 회원 정보나 상품 정보를 전달해야 할 경우 포워딩 방식만 사용할 경우 문제
+- 서블릿에서 다른 서블릿 또는 JSP로 대량의 데이터를 공유하거나 전달할 때 바인딩(binding) 기능 사용
+
+##### 바인딩 방법
+
+- 포워딩할 때 setAttribute(“바인딩이름”, 데이터) 메소드를 사용해서 바인딩 이름과 데이터를 묶어서 설정한 후 포워딩된 문서에서 getAtrribute(“바인딩이름”) 메소드를 사용해서 바인딩된 데이터를 추출해서 사용
+- redirect 방식으로는 전송 안 되고 dispatch 포워딩 방식 사용
+
+#### **DTO vs VO**
+##### DTO (Data Transfer Object)
+
+- 데이터 저장 담당 클래스 (Model)
+- Controller, Service, View 등 계층간 데이터 교환을 위해 사용되는 객체
+- 비즈니스 로직을 갖지 않는 순수한 데이터 객체
+- Getter / Setter 메소드만 포함
+- 가변의 성격 (Setter : 값을 설정 (값이 바뀜)
+
+##### VO (Value Object)
+
+- 데이터 저장 담당 클래스 (Model)
+- DTO와 혼용해서 사용되지만 VO는 값(value)을 위해 사용되는 객체로 불변(read only)의 속성
+- 보통 Getter의 기능만 포함
+- 그러나 일반적으로 스프링에서 VO로 사용되지만 Getter/Setter 기능 다 사용하는 경우도 있음
+
