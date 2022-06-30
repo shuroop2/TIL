@@ -121,8 +121,86 @@
   - 컨텍스트 : session / application / pageContext
   - 예외 처리 : exception
 - ![img](https://lh6.googleusercontent.com/lkIveLMSrYkXSHuiEaw5nE1f1ggD4e0dV02Yxi4bqKIu0Qf1smiG_f8bwmI4C-i38RgdR8qBqt-jA8EipN9Zy2CaHfZnDDi_MjDS9ap1KivFRFYhk2v1CM9ZM4Zl3bgSZ2i5IpnK)
-
 - request 객체의 파라미터 관련 메소드
   - ![img](https://lh3.googleusercontent.com/MePYhU2aC-2gMhZwWDsmy-CYb1MxlQf-ijtucy5fE5ctcX3vnuz744QHR_0WT9SgALPhLL4Blb08k2gnUdAnXpQpwS1ePddZ3XIKUnt8aLWaXHB_AfZqUC_OH4JFVaGfGHbnBeI5)
   - HTML 태그의 name 속성 값을 받음
     - `<input type="text" name="name">`
+- response 객체
+  - JSP 페이지에서 처리한 결과를 웹 브라우저에 응답할 때 사용
+  - 헤더 설정, 코드 상태, 쿠키 등 정보 포함되어 있음
+  - 응답 콘텐츠 설정, 응답 헤더 설정, 상태 코드 설정과 관련된 메소드 제공
+  - ![img](https://lh3.googleusercontent.com/uI2KPLnuNPPH_jEjh7bVpakiJOV-OF5B85k3KXz979iepJY_uwgibPn073pyPQ-c0A0oZpYrNcZJ9i34xnjCzfmqiF5AqOZyZmfIwH7nlTTCmlADuyacxfL3d-DsOf0XekxxHHl4)
+- out 객체
+  - 웹 서버에서 웹 브라우저에게 출력 스트림으로 응답하기 위해 사용
+  - out.println("출력 문자열");
+  - 표현식 <%= 출력문자열 %>과 동일
+  - println() : 줄바꿈 적용되지 않음
+    - print()와 동일한 결과 (스페이스 한 칸 정도 차이)
+    - 줄바꿈 하기 위해서는 `<br>` 태그 사용
+
+#### 액션 태그
+
+- JSP 페이지 내에서 어떤 동작을 지시하는 태그
+- 어떤 동작 또는 액션이 일어나는 시점에 페이지와 페이지 사이에서의 제어 이동 또는 다른 페이지의 실행 결과를 현재 페이지에 포함하는 기능 제공
+
+##### 액션 태그 종류
+
+- include
+  - `<jsp:include>`
+  - 다른 페이지의 실행 결과를 현재 페이지에 포함시킬 때 사용
+  - 페이지를 모듈화할 때 사용
+  - <jsp:include page=”포함될 페이지” flush=”true” />
+  - page 속성 : 결과가 포함될 페이지면
+  - flush 속성
+    - 포함될 페이지로 제어가 이동될 때 현재 포함하는 페이지가 지금까지 출력 버퍼에 저장한 결과를 처리하는 방법을 결정
+    - true
+      - 현재 페이지가 지금까지 버퍼에 저장한 내용을 웹 브라우저에 출력하고 버퍼를 비움
+  - ![img](https://lh5.googleusercontent.com/0WkpaWQwdB0mspsRk1_xQJYqYABhtgFtvrAU--YVzKi6AtPbJPMh0tc2GuOdcGagC7lUqcmF3Qqk6X8WbwabOQaI6OAybsAL9eiMg_ZfSdvz66QsRgEsrNDji7LN2qSw63bwpNVw)
+  - ![img](https://lh3.googleusercontent.com/iCwCiKsgPy8i9rTLgDpFB4q4GQOilHkO23TC0PF6iRaTetdaHEzzHk4xL2d-Y5t-LHiAs7Lx8jTelHX6PlZu3RGmZeZY0ZRryNWSBrEUBAqHpxTACqJi_V8uiAhYgeEwAcSKtyXz)
+- forward
+  - <jsp:forward page=”포워딩할 JSP 페이지” />
+  - 현재 페이지에서 다른 특정 페이지로 전환
+  - 웹 페이지 간의 제어를 이동시킬 때 사용
+- param
+  - `<jsp:param>`
+  - 이동하는 페이지에 파라미터 값을 전달할 때 사용
+- useBean
+  - `<jsp:useBean>`
+  - 자바빈을 JSP 페이지에서 이용할 때 사용
+  - DTO / VO 에 해당
+- setProperty
+  - `<jsp:setProperty>`
+  - 프로퍼티의 값을 세팅할 때 사용
+  - setter
+- getProperty
+  - `<jsp:getProperty>`
+  - 프로퍼티의 값을 가져올 때 사용
+  - getter
+- plug-in
+
+##### 자바빈 (JavaBeans)
+
+- DTO / VO 와 같은 개념
+- 데이터를 다루기 위해 자바로 작성되는 소프트웨어 컴포넌트로 재사용 가능
+- 입력 폼의 데이터와 데이터베이스의 데이터 처리 부분에서 활용
+- 클래스로 작성
+  - 멤버 필드로 속성(property)이 있고
+  - 멤버 메소드로 Getter/Setter 메소드 포함
+  - setXXX() : 프로퍼티에 값 저장
+  - getXXX() : 프로퍼티 값 반환
+- 액션 태그를 이용해서 빈 사용
+- 속성 접근 제어자는 private
+- Getter/Setter 메소드와 클래스는 public
+- 자바빈 관련 액션 태그
+  - userBean
+    - `<jsp:useBean>`
+    - 자바빈을 JSP 페이지에서 사용할 때 사용
+  - setProperty
+    - `<jsp:setProperty>`
+    - 프로퍼티(속성) 값을 설정할 때 사용
+    - 데이터 설정(저장)
+    - 모든 속성을 한꺼번에 설정
+      - form의 `<input>` 태그 속성명을 클래스 필드명과 동일하게 지정하고 <jsp:setProperty property="\*".. />로 설정
+  - getProperty
+    - `<jsp:getProperty>`
+    - 프로퍼티의 값을 얻어낼 때 사용
