@@ -48,7 +48,7 @@
     - 대표적인 CGI 언어 : 펄(Perl)
   - 프로세스(Process) 방식으로 실행됨
   - 프로세스 마다 메모리에 로드하는 방식으로 메모리에 과부하 발생하는 문제
-- 이런 문제를 해결하면서 기술들이 JSP, ASP, PHP
+- 이런 문제를 해결한 기술들 : JSP, ASP, PHP
   - 브라우저 요청 시 스레드 방식으로 실행하므로 CGI보다 효율적으로 기능을 수행함
   - 클라이언트 요구를 처리하는 기능은 최초 한 번만 메모리에 로드
   - 동일한 기능 요구 시 기존에 사용한 기능을 재사용
@@ -120,7 +120,8 @@
 
 - JSP (Java Server Page)
   - 서버측 스크립트 언어
-  - 형식 : HTML 내에 Java 언어를 삽입한 문서 형태.jsp
+  - 형식 : HTML 내에 Java 언어를 삽입한 문서 형태
+  - .jsp
 - Servlet(Server + Applet)
   - Java 언어로 이루어진 웹 프로그래밍 문서
   - 자바 코드에 의존적
@@ -146,12 +147,13 @@
 
 #### 서블릿 현황
 
-- 서블릿은 현재 현업에서 새로이 개발하는데 많이 사용되지 않음
+- 서블릿은 현업에서 새로이 개발하는데 많이 사용되지 않음
 - 소수 사용
   - 2000년 중반에 구축한 시스템(Servlet과 JSP로 사용해 구축)들이 아직 사용
   - 최신 시스템으로 변환하는데 비용이 많이 들기 때문
   - 개발자 - 유지보수
-- 웹 서버와 브라우저의 동작 및 Spring 이해에 도움HTTP request와 HTTP response는 스프링에서도 사용
+- 웹 서버와 브라우저의 동작 및 Spring 이해에 도움
+- HTTP request와 HTTP response는 스프링에서도 사용
 
 #### 서블릿 학습 내용
 
@@ -164,8 +166,7 @@
 #### 서블릿 처리 순서
 
 - 클라이언트에서 서블릿 요청이 들어오면
-- 서버에서 서블릿 컨테이너를 만들고 스레드 생성
-- (요청 시 마다 스레드 생성)
+- 서버에서 서블릿 컨테이너를 만들고 스레드 생성 (요청 시 마다 스레드 생성)
 - 서블릿 컨테이너는 스레드를 가동하여 서블릿 객체 생성
 - 서블릿 객체의 실행이 종료되면 스레드 종료되고 반환
 - 서블릿 실행 결과가 웹 서버에 전송
@@ -227,11 +228,13 @@
 
 #### **예제에서의 서블릿 동작 과정**
 
-- http://localhost:8080/Servlet01/first 로 요청
-- FirstServlet이 메모리에 존재하는지 체크없으면 FirstServlet을 메모리에 로드
+- `http://localhost:8080/Servlet01/first` 로 요청
+- FirstServlet이 메모리에 존재하는지 체크
+  - 없으면 FirstServlet을 메모리에 로드
+
 - init() 메소드 호출
 - doGet() 또는 doPost() 메소드 호출
-  - method 지정하지 않으면 doGet() 디폴트
+  - method 지정하지 않으면 디폴트는 doGet()
 - 클라이언트에게 결과 응답
   - 예제에서는 웹페이지로 응답하지 않고 콘솔에 출력
 - <img src="https://lh5.googleusercontent.com/P0JJFQzSnCzyieROAaGIw_evEr2BQbte2fBm4nG_r1deLFS5SNKyiDSOtz8_AjRpsObZVqNgvUML4t2tEKElLFqk61TZkSVQsZ5c_JtscEzhOqLT24j0VgdVuagikKdutfJWUtA" alt="img" style="zoom:50%;" />
@@ -239,7 +242,7 @@
 #### 컨텍스트 (Context)
 
 - 톰캣의 server.xml에 등록하는 웹 애플리케이션을 컨텍스트라고 함
-- 즉, 톰캣 입장에서 인식하는 한 개의 웹 애플리케이션임
+- 즉, 톰캣 입장에서 인식하는 한 개의 웹 애플리케이션
 - 웹 애플리케이션 당 하나의 컨텍스트가 등록됨
 - 웹 애플리케이션 이름과 같을 수도 다를 수도 있음
 - 컨텍스트 이름은 중복되면 안 됨
@@ -253,8 +256,8 @@
 #### URL / URI / ContextPath / ServletPath
 
 - URL : 전체 주소
-  - http://localhost:8080/Servlet01/first
-  - 프로토콜 + IP + 포트번호 + URI
+  - `http://localhost:8080/Servlet01/first`
+  - 프로토콜 (http) + IP (localhost) + 포트번호 (8080) + URI (/Servlet/first)
 - URI : ContextPath + ServletPath
   - /Servlet01/first
   - 프로젝트명 + 서블릿 맵핑 이름
@@ -265,7 +268,7 @@
 - ![img](https://lh4.googleusercontent.com/xYEvCJ9CxBr03lW4ya0c7WfJAIZPZj4_F8ijYZcKlXoCAaBNk_5BUND5_QZ7Ff_wBW-eqKw4VlI2QEgyDB-wcFreHMEn5c8OJthDqz-fR3nGD1PU2zwbXGpC6si5BZN4u3vMX1s)
   - URI (Uniform Resource Identifier) : 통합 자원 식별자
     - 특정 리소스를 구분하는 식별자
-    - 논리적 또는 물리적 리소스 (접글할 리소스 위치를 알 수 있음)
+    - 논리적 또는 물리적 리소스 (접근할 리소스 위치를 알 수 있음)
     - 인터넷, 모바일 기기 등 다양한 곳에서 사용
   - URL (Uniform Resource Locator) : 웹 주소
     - 리소스 위치
@@ -318,7 +321,8 @@
 - 데이터를 전송할 때 TCP/IP 프로토콜 데이터의 HEAD 영역에 숨겨서 전송됨
 - 보안에 유리
 - 전송 데이터 길이 : 용량이 무제한
-- 서블릿에서는 doPost() 메소드 이용해서 데이터 처리GET 방식보다 느림
+- 서블릿에서는 doPost() 메소드 이용해서 데이터 처리
+- GET 방식보다 느림
 
 #### 주의할 점
 
@@ -328,7 +332,7 @@
   - getParameterValues() 메소드 사용
   - 반환되는 값이 배열이므로 배열 처리해서 사용
 - 참고
-  - 라디오버튼인 경우 한 그룹의 라디오 버튼 이름이 다 동일해도 1개의 값만 전송되므로 getParameter() 메소드 사용
+  - 라디오 버튼인 경우 한 그룹의 라디오 버튼 이름이 다 동일해도 1개의 값만 전송되므로 getParameter() 메소드 사용
 
 #### 서블릿 응답 처리
 
@@ -432,9 +436,9 @@
 ##### DTO (Data Transfer Object)
 
 - 데이터 저장 담당 클래스 (Model)
-- Controller, Service, View 등 계층간 데이터 교환을 위해 사용되는 객체
+- Controller, Service, View 등 계층 간 데이터 교환을 위해 사용되는 객체
 - 비즈니스 로직을 갖지 않는 순수한 데이터 객체
-- Getter / Setter 메소드만 포함
+- Getter/Setter 메소드만 포함
 - 가변의 성격 (Setter : 값을 설정 (값이 바뀜)
 
 ##### VO (Value Object)
@@ -443,4 +447,3 @@
 - DTO와 혼용해서 사용되지만 VO는 값(value)을 위해 사용되는 객체로 불변(read only)의 속성
 - 보통 Getter의 기능만 포함
 - 그러나 일반적으로 스프링에서 VO로 사용되지만 Getter/Setter 기능 다 사용하는 경우도 있음
-
