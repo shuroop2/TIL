@@ -50,11 +50,11 @@
     - 스크립트릿
   - 액션 태그
 
-#### 지시어
+#### 지시어 (Directive Tag)
 
 - JSP 페이지의 전체적인 속성을 지정할 때 사용
 - JSP 컨테이너에게 전달하는 JSP 페이지 관련 메시지
-- <%@ 지시어 속성1=값, 속성2=값, ... %>
+- <%@ 지시어 속성1=값1 속성2=값2 ... %>
 - ![img](https://lh4.googleusercontent.com/-0hyP16eXUffhGjbkRcp3wO7raME5CNQCPP9IRERZE4ieLoHoPKaswIu3O2DB0KJ6-1pIEdtKSte8vy3R74tZsLAXVfFtOQjWAk1-cYsa3rzuSfwZXPVPjMCcEuUaonsWzr1HwGv)
 
 ##### 지시어 종류
@@ -63,12 +63,12 @@
   - <%@ page ... %>
   - JSP 페이지에 대한 속성 설정
 - include 지시어
-  - <%@ include file=”포함될 파일의 url” %>
+  - <%@ include file="포함될 파일의 url" %>
   - 공통적으로 포함될 내용을 가진 파일을 해당 JSP 페이지 내에 삽입하는 기능을 제공
   - 복사 & 붙여넣기 방식으로 두 개의 파일이 하나의 파일로 합쳐진 후 하나의 파일로서 변환되고 컴파일
 - taglib 지시어
-- <%@ taglib prefix=”c” uri=”http:.....  %>
-- 표현 언어 (EL : Expression Language), JSTL(JSP Standard Tag Library)를 JSP 페이지 내에서 사용할 씀
+- <%@ taglib prefix="c" uri="http:....."  %>
+- 표현 언어 (EL : Expression Language), JSTL(JSP Standard Tag Library)를 JSP 페이지 내에서 사용할 사용
 
 #### 선언문 (Declaration)
 
@@ -89,11 +89,9 @@
 
 #### 표현식 (Expression)
 
-- =변수 값, 계산 결과, 함수 호출 결과를 직접 출력하기 위해 사용
+- 변수 값, 계산 결과, 함수 호출 결과를 직접 출력하기 위해 사용
 
-- <%= 식 %>
-
-- <%= 변수명 %>
+- <%= 값 | 자바 변수 | 자바 식 %>
 
 - 예
 
@@ -123,8 +121,6 @@
 - ![img](https://lh6.googleusercontent.com/lkIveLMSrYkXSHuiEaw5nE1f1ggD4e0dV02Yxi4bqKIu0Qf1smiG_f8bwmI4C-i38RgdR8qBqt-jA8EipN9Zy2CaHfZnDDi_MjDS9ap1KivFRFYhk2v1CM9ZM4Zl3bgSZ2i5IpnK)
 - request 객체의 파라미터 관련 메소드
   - ![img](https://lh3.googleusercontent.com/MePYhU2aC-2gMhZwWDsmy-CYb1MxlQf-ijtucy5fE5ctcX3vnuz744QHR_0WT9SgALPhLL4Blb08k2gnUdAnXpQpwS1ePddZ3XIKUnt8aLWaXHB_AfZqUC_OH4JFVaGfGHbnBeI5)
-  - HTML 태그의 name 속성 값을 받음
-    - `<input type="text" name="name">`
 - response 객체
   - JSP 페이지에서 처리한 결과를 웹 브라우저에 응답할 때 사용
   - 헤더 설정, 코드 상태, 쿠키 등 정보 포함되어 있음
@@ -147,10 +143,10 @@
 
 - include
   - `<jsp:include>`
+  - <jsp:include page=”포함될 페이지” flush=”true” />
   - 다른 페이지의 실행 결과를 현재 페이지에 포함시킬 때 사용
   - 페이지를 모듈화할 때 사용
-  - <jsp:include page=”포함될 페이지” flush=”true” />
-  - page 속성 : 결과가 포함될 페이지면
+  - page 속성 : 결과가 포함될 페이지
   - flush 속성
     - 포함될 페이지로 제어가 이동될 때 현재 포함하는 페이지가 지금까지 출력 버퍼에 저장한 결과를 처리하는 방법을 결정
     - true
@@ -158,27 +154,32 @@
   - ![img](https://lh5.googleusercontent.com/0WkpaWQwdB0mspsRk1_xQJYqYABhtgFtvrAU--YVzKi6AtPbJPMh0tc2GuOdcGagC7lUqcmF3Qqk6X8WbwabOQaI6OAybsAL9eiMg_ZfSdvz66QsRgEsrNDji7LN2qSw63bwpNVw)
   - ![img](https://lh3.googleusercontent.com/iCwCiKsgPy8i9rTLgDpFB4q4GQOilHkO23TC0PF6iRaTetdaHEzzHk4xL2d-Y5t-LHiAs7Lx8jTelHX6PlZu3RGmZeZY0ZRryNWSBrEUBAqHpxTACqJi_V8uiAhYgeEwAcSKtyXz)
 - forward
+  - `<jsp:foward>`
   - <jsp:forward page=”포워딩할 JSP 페이지” />
   - 현재 페이지에서 다른 특정 페이지로 전환
   - 웹 페이지 간의 제어를 이동시킬 때 사용
+
 - param
   - `<jsp:param>`
   - 이동하는 페이지에 파라미터 값을 전달할 때 사용
 - useBean
   - `<jsp:useBean>`
-  - 자바빈을 JSP 페이지에서 이용할 때 사용
+  - <jsp:useBean id="빈 이름" class="패키지 이름을 포함한 자바 빈 클래스" [scope="접근범위"] />
+  - 자바 빈을 JSP 페이지에서 이용할 때 사용
   - DTO / VO 에 해당
 - setProperty
   - `<jsp:setProperty>`
-  - 프로퍼티의 값을 세팅할 때 사용
+  - <jsp:setProperty name="자바 빈 이름" property="속성 이름" value="값" />
+  - useBean의 프로퍼티의 값을 세팅할 때 사용
   - setter
 - getProperty
   - `<jsp:getProperty>`
-  - 프로퍼티의 값을 가져올 때 사용
+  - <jsp:getProperty name="자바 빈 이름" property="속성 이름" />
+  - useBean의 프로퍼티의 값을 가져올 때 사용
   - getter
 - plug-in
 
-##### 자바빈 (JavaBeans)
+##### 자바 빈 (Java Bean)
 
 - DTO / VO 와 같은 개념
 - 데이터를 다루기 위해 자바로 작성되는 소프트웨어 컴포넌트로 재사용 가능
@@ -191,16 +192,10 @@
 - 액션 태그를 이용해서 빈 사용
 - 속성 접근 제어자는 private
 - Getter/Setter 메소드와 클래스는 public
-- 자바빈 관련 액션 태그
-  - userBean
-    - `<jsp:useBean>`
-    - 자바빈을 JSP 페이지에서 사용할 때 사용
+- 자바 빈 관련 액션 태그
+  - useBean
   - setProperty
-    - `<jsp:setProperty>`
-    - 프로퍼티(속성) 값을 설정할 때 사용
     - 데이터 설정(저장)
     - 모든 속성을 한꺼번에 설정
       - form의 `<input>` 태그 속성명을 클래스 필드명과 동일하게 지정하고 <jsp:setProperty property="\*".. />로 설정
   - getProperty
-    - `<jsp:getProperty>`
-    - 프로퍼티의 값을 얻어낼 때 사용
