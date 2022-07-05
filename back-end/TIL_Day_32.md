@@ -222,3 +222,68 @@
          - 주의 : Setter 메소드를 사용할 경우에는 기본 생성자 외에 다른 생성자를 정의해서는 안 됨
 
    2. Annotation을 이용한 DI
+   
+      - xml 설정 파일에서 `<bean>` 태그를 이용해서 설정하였던 bean 설정을 Annotation(메타데이터)을 이용해서 자바 코드에서 설정
+      - 예
+        - xml 설정 파일에서 빈을 설정하지 않고 스프링 자바 소스 코드를 읽어서 클래스에 @Component 어노테이션이 붙은 클래스를 객체화 (bean 설정)
+        - A1 클래스의 객체를 A2 클래스의 객체로 변경하려면 A1 클래스에서 @Component를 제거하고 A2 클래스에 @Component를 붙이면 됨
+        - @Autowired 어노테이션을 사용하여 bean을 자동 삽입
+      - xml 설정 파일에 context 네임스페이스 추가
+        - bean 설정을 위한 어노테이션을 사용하기 위해서는 설정 파일에 context 네임스페이스가 추가되어있어야 함 ([Namespaces] 탭에서 추가)
+        - `<context:component-scan>` 태그를 이용하여 bean으로 등록된 클래스를 찾아서(scan) 클래스를 객체화 (bean 설정)
+      - 스프링에서 사용하는 Annotation
+        - DI(의존성 주입) 관련 Annotation
+          - xml 설정 파일에 있는 `<bean>`에 대해 DI하거나 자바 코드에서 생성된 bean에 대해 DI 할 수 있음
+          - Annotation 종류
+            - @Autowired
+              - 타입을 기준으로 의존성 주입
+              - 스프링 bean에 의존하는 다른 bean을 자동으로 주입할 때 사용
+              - 스프링에서 지원
+            - @Inject
+              - @Autowired와 동일
+              - 자바에서 지원
+            - @Qualifier
+              - 특정 bean의 이름을 지정
+              - 동일한 interface 구현한 클래스가 여러 개 있는 경우 사용하고자 하는 bean의 이름을 지정할 때 사용
+            - @Resource
+              - @Autowired와 @Qualifier를 같이 사용하는 것과 동일
+              - javax.annotation 라이브러리 추가 필요
+              - 자바에서 지원
+        - bean 생성 관련 Annotation
+          - bean 생성(설정)을 위해 클래스 위에 추가되는 어노테이션
+          - 클래스 이름 위에 붙이면 클래스 파일에 대한 bean이 자동 생성 (xml 파일에서 bean 생성하지 않음)
+          - bean의 이름은 클래스 이름에서 첫 문자만 소문자로 지정됨
+            - 예 : NameService 클래스의 bean 이름은 nameService
+          - xml 설정 파일에서 필요한 작업
+            - xml 설정 파일에 context 네임스페이스 추가 필요
+            - `<context:component-scan base-package="패키지명" />`
+              - @Component 어노테이션이 적용된 클래스를 bean으로 등록
+              - bean으로 등록될 클래스가 들어있는 패키지 지정
+              - 상위 패키지를 지정하면 하위 패키지까지 bean으로 등록될 클래스 찾음
+              - `<context:annotation-config />` 필요 없음
+          - Annotation 종류
+            - @Component
+              - 클래스를 bean으로 등록 (부품 등록)
+              - bean id 지정할 수 있음
+              - @Component("bean이름")
+                - `<bean id="bean이름">`에 해당
+              - @Controller
+              - @Service
+              - @Repository
+            - @Configuration
+              - @Bean
+        - Spring MVC / Boot 관련 어노테이션은 뒤에서 상세히 다룸
+
+##### @Component 어노테이션의 의미론적 어노테이션
+
+- @Component : 일반적인 컴포넌트 의미
+- 특화된 @Component 어노테이션
+  - 클래스의 역할에 따라 의미론적으로 구분
+  - @Controller 컴포넌트
+  - @Service 컴포넌트
+  - @Repository 컴포넌트
+  - ![img](https://lh4.googleusercontent.com/Tp26pCYLQd5GX3oQC-mC9uEcpjHY2oE9Lx27PRBhpU178msGXS9O1uqOzGo_FQC-SbIFmeGt_oQiLGzwiRLkZ7zCe-BietZ5ti1AtB2IMaJRzYaj_8PmDu_UeeRUojIP-zMldjw)
+
+##### Spring MVC 구성에 따른 어노테이션 사용
+
+![img](https://lh6.googleusercontent.com/RpTo3xkqofNDdG_BXaFfkeppHIYNNJyi2vNgenpLv--Efxk441i3hdxFdcUN25KBDh49jk7VdzF6ZzZ7HZuJ-AgBqSt6p5FYPjtbgYvZmavdpUynwkbz1A5M1VPjDbHyeI8XezA)
