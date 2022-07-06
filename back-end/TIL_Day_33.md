@@ -106,12 +106,20 @@
 3. 요청 처리 메소드 구현
 4. 뷰 페이지 이름 반환
 
+#### @RequestMapping 다중 맵핑
+
+- 한 개의 메소드를 여러 요청 경로로 접근 처리 가능
+
+- ```java
+  @RequestMapping(value={"요청경로1", "요청경로2"})
+  ```
+
 #### 데이터 전달
 
 1. Controller => View 페이지
 2. View => Controller
-   - Form을 통한 데이터 전달 : Form 데이터 처리
-   - url을 통한 데이터 전달
+   1. form을 통한 데이터 전달 : form 데이터 처리
+   2. url을 통한 데이터 전달
 
 ##### Controller => View 페이지
 
@@ -136,10 +144,12 @@
       - (return 되는 뷰페이지로 전달 : data 추출)
 
       - ```java
-        public String home(Locale locale, Model model) {
-        	model.addAttribute("serverTime", formattedDate);
+        public String showInfo(Model model) {
+        	model.addAttribute("name", "홍길동");
+            return "showInfo"; // 뷰 페이지 이름 반환
         }
-        ${serverTime}
+        ...
+        ${name}
         ```
 
   - ModelAndView 사용
@@ -151,9 +161,61 @@
     - 반환값으로 ModelAndView 객체 반환
 
     - Model과 ModelAndView 같이 사용 가능
-
+  
     - ```java
-      ModelAndView mv = new ModelAndView();
-      mv.addObject("name", "홍길동"); // 데이터 설정
-      mv.setViewName("showInfo2"); // 뷰 이름 설정
-      return mv; // ModelAndView 객체 반환
+      public String showInfo2(ModelAndView mv) {
+      	mv.addObject("name", "홍길동"); // 데이터 설정
+      	mv.setViewName("showInfo2"); // 뷰 이름 설정
+      	return mv; // ModelAndView 객체 반환
+      }
+      ```
+
+##### View 페이지 => Controller
+
+1. form을 통한 데이터 전달
+
+   - form 데이터를 컨트톨러로 전송할 때 스프링에서 HTTP 요청 파라미터 가져오는 방법 3가지
+     1. getParameter() 메소드 사용
+        - request.getParameter("no");
+     2. @RequestParam 어노테이션 사용
+        - 메소드의 파라미터로 설정
+     3. Command 객체 사용
+        - 데이터 저장용 클래스 생성
+        - 요청을 수행하는 메소드에서 객체 사용 (커맨드 객체)
+        - 커맨드 객체는 자동으로 View의 Model에 등록
+        - View 페이지에서 ${객체.필드명}
+        - 주의
+          - form의 `<input>` 태그의 name 속성명과 클래스의 멤버 필드명이 동일해야 함
+          - 이름이 다르면 필드에 값이 저장되지 않음
+        - @ModelAttribute 어노테이션
+          - 커맨드 객체 사용 시 Model 설정 이름(객체 이름) 변경 가능
+          - 예시
+            - @ModelAttribute("stdInfo") Student student
+            - ${stdInfo.stdNo}
+   - 정보 입력 폼(View 페이지) 열고
+     - 단순히 폼(View 페이지)를 여는 것도 컨트롤러를 통해서 열어야 함
+   - 입력한 데이터를 컨트롤러로 전송한 후
+   - 전송 받은 데이터를 View 페이지로 출력
+
+2. url을 통한 데이터 전달
+
+   - @PathVariable 어노테이션 사용
+
+   - ```
+     학번 : ${stdNo}
+     <a href="/project/student/studentDetailView/${stdNo}">${stdNo}</a>
+     @RequestMapping("/student/studentDetailView/{stdNo}")
+     public String studentDetailView(@PathVariable String stdNo) {
+     
+     }
+     ```
+
+   - HashMap으로 받기
+
+     - 여러 개의 값을 HashMap으로 받을 수 있음
+     - 예시
+       - 학생 검색 폼
+         - 검색 조건 : type
+         - 검색 값(입력값) : keyword
+     - 컨트롤러
+       - @RequestParam HashMap<String, Object> param
