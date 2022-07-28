@@ -168,18 +168,18 @@
 
 #### CLOVA OCR 예제
 1.  API 호출 결과 출력
-	-   OCRService 서비스 클래스 생성 
-	-   ocrGeneral() : 메소드 추가
-	-   API 코드 복사
+	- OCRService 서비스 클래스 생성 
+	- ocrGeneral() : 메소드 추가
+	- API 코드 복사
 		1. ocrGeneral() 메소드에 복사
 			- apiURL : GateWay URL
 			- Secret Key
 		2. writeMultiPart() 메소드도 복사해서 아래 붙여넣기
-		-   결과를 콘솔에 출력
-	-   컨트롤러에 추가 : ocrService
-		-   /OCRGeneral
-	-   index.jsp에 추가
-	-   JSON 형식 결과 출력 확인 Json Viewer에서 확인
+		- 결과를 콘솔에 출력
+	- 컨트롤러에 추가 : ocrService
+		- /OCRGeneral
+	- index.jsp에 추가
+	- JSON 형식 결과 출력 확인 Json Viewer에서 확인
 2. JSON 결과 파싱
 	- jsonToString() 메소드 추가
 		- JSON 형태의 문자열 파싱해서 결과 반환
@@ -205,18 +205,18 @@
 
 #### OCR Template 예제
 1.  API 호출 결과 출력
-	-   OCRService 서비스 클래스에 추가 
-	-   ocrTemplate() : 메소드 추가
-		-   API 코드 복사
-			-   apiURL : OCR APIGW Invoke URL
-			-   Secret Key
-			-   receipt.jpg / receipt2.jpg
+	- OCRService 서비스 클래스에 추가 
+	- ocrTemplate() : 메소드 추가
+		- API 코드 복사
+			- apiURL : OCR APIGW Invoke URL
+			- Secret Key
+			- receipt.jpg / receipt2.jpg
 	- 컨트롤러에 추가 : ocrService 객체 사용
 		- /OCRTemplate
 	- index.jsp에 추가
 	- JSON 형식 결과 출력 확인 JSON Viewer에서 확인
 
-### 음성 변환 서비스
+### 음성 변환 서비스1 (음성 -> 텍스트)
 - CLOVA Speech Recognition (CSR)
 	- 사람의 목소리를 인식하여 텍스트로 변환해주는 음성 인식 API 서비스
 	- 언어별 지원
@@ -252,15 +252,112 @@
 		1. FileOutputStream
 		2. FileWriter
 5. 언어 선택 기능 추가
-	-   한국어 (디폴트)
-	-   영어
-	-   일본어
-	-   중국어
+	- 한국어 (디폴트)
+	- 영어
+	- 일본어
+	- 중국어
 
+### 음성 변환 서비스2 (텍스트 -> 음성)
+- 서비스 신청 : CLOVA Voice - Premium
+1. API 호출 결과 출력 (Text To Speech)
+	- TTSService 서비스 클래스 생성
+	- tts() 메소드 추가
+		- API 코드 복사
+			- 텍스트를 서버에 전송하고 음성 파일 반환 받음 (.mp3로 저장)
+			- Client ID
+			- Client Secret
+			- 기본 문자열 사용
+				- "만나서 반갑습니다"
+			- 기본 speaker 사용 : nara
+	- 컨트롤러에 추가 : ttsService 객체 사용
+		- /tts
+	- index.jsp에 추가
+	- 저장된 mp3 파일 위치 확인 / 플레이 확인
+2. 파일 업로드 / 결과 mp3 플레이
+- @RestController에 추가 
+- tts.js / Ajax  사용
+	- tts() 
+		- 텍스트 파일 받아서 fileRead() 함수 호출해서 텍스트 파일 내용을 문자열 받음
+		- 문자열을 서버에 전송하고 음성 파일 받아서 저장
+		- 음성 파일명 return
+	- 파일에서 텍스트 추출하는 함수 추가
+		- fileRead() 함수
+			- txt 파일을 받아서 내용을 읽고 문자열로 반환
+- ttsResult.jsp
+	- 파일 업로드 기능 추가 
+	- 결과 mp3 파일을 `<audio>` 태그로 플레이
+	- 음성 파일명 출력 : resultBox
+- 컨트롤러에 추가
+- index에 변경
+- 결과 확인 
+	- 텍스트 파일 업로드
+	- 결과로 받은 mp3 파일 저장
+	- `<audio>` 태그에서 mp3 파일 플레이
+	- 파일명이 jsp에 출력
+3. 목소리 선택 기능 추가
+	- `<select>` 태그 사용
 
+### Chatbot
+#### Chatbot 구현 과정
+1. 도메인 생성
+2. 대화 생성
+	- 학습 질문 입력 (여러 개)
+	- 챗봇 답변 입력 (여러 개)
+	- 웰컴 메시지 작성
+3. 챗봇 빌드 (대화 모델 빌드)
+4. 챗봇 테스트
+5. 서비스 배포
+	- 빌드 내역 확인
+6. 메신저 연동 (Custom 연동 설정)
+	- API Gateway Invoke URL 복사
+	- Secret Key 생성 / 복사
+7. STS에서 작업
 
-
-
-
+#### Chatbot 예제
+1. API 호출 결과 출력
+	-   ChatbotService 서비스 클래스 생성
+	-   API 코드 복사 
+		-   메소드 3개 다 복사
+			-   main() / makeSignature() / getReqMessage()
+			-   java.uti.Base64
+			-   java.net.URL
+			-   java.util.Date
+			-   makeSignature() 메소드에서 다음 라인 변경
+			-   //encodeBase64String = Base64.encodeToString(rawHmac, Base64.NO_WRAP);
+			-   encodeBase64String = Base64.getEncoder().encodeToString(rawHmac); 로 변경
+			-   static 그대로 두고 결과 확인
+	-   APIController에 추가
+		-   main() 호출하면 메시지 전달 : “넌 누구니?”
+		-   결과 받아서 콘솔에 출력
+	-   index에 추가
+	-   콘솔 창에서 받은 결과 Json viewer로 확인
+	- 주의!
+		1.  main() 메소드 호출 : 파라미터 전달
+		2.  main() 메소드가 static : 어떻게 호출?
+		3.  main() 메소드 호출하고 결과 받아서 출력
+2. JSON 파싱
+	-   jsonToString() 메소드 추가 
+	-   응답 메시지 추출 / 출력
+3. 뷰 페이지에서 입력 / 출력
+	-   AIRestController / Ajax
+	-   chatbot.js
+	-   chatForm.jsp 생성
+		-   `<div ="resultBox">`
+			- 답변 출력
+		-   `<form id="chatForm">`
+			-   질문 입력
+	-   컨트롤러 변경
+	-   index 변경
+4. 채팅창 꾸미기
+	- chat.css
+	- chat.js 변경
+	- chatForm.jsp 변경
+5. 웰컴 메시지 출력
+6. 음성 메시지로 챗봇에게 질문 / 음성으로 답변 받기
+7. 채팅창에 출력하지 않고 음성으로만 채팅
+8. 이미지 답변 / 멀티 링크 답변 / 빌드 / 배포
+	- 시간 관련 질문 / 답변
+	- 독서 모임 장소 위치 / 약도 문의 : 이미지 답변
+	- 독서 모임 신청 : 멀티링크 답변
 
 
