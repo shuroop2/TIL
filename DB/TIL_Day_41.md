@@ -106,7 +106,7 @@
 		- 개체 타입을 나타내는 직사각형과 실선으로 연결
 		- 속성의 이름은 타원의 중앙에 표기
 		- 속성이 개체를 유일하게 식별할 수 있는 키일 경우 속성 이름에 밑줄
-		- ![[Pasted image 20220803180412.png]]
+		- <img src="https://user-images.githubusercontent.com/83208762/182619974-bc32c1e9-84d5-4c3c-b89c-411851595c87.png" />
 	- 속성의 유형
 		- 속성 분해 여부에 따라 분류
 			- 단순 속성
@@ -114,7 +114,7 @@
 			- 복합 속성
 				- 2개 이상의 속성들로 분해할 수 있는 속성
 				- 독립적인 의미
-			- ![[Pasted image 20220803180542.png]]
+			- <img src="https://user-images.githubusercontent.com/83208762/182619911-180b03c8-b9b3-4a07-a43b-24b3a974e18a.png" />
 		- 속성 값의 개수에 따라 분류
 			- 단일 값 속성
 				- 반드시 하나의 값만 존재
@@ -122,70 +122,70 @@
 			- 다중 값 속성
 				- 여러 개의 값 존재 가능
 				- 예 : 전화번호 - 집, 휴대폰
-			- ![[Pasted image 20220803180618.png]]
+			- <img src="https://user-images.githubusercontent.com/83208762/182620054-736e2412-f5cc-4acd-83ee-d490efc88f09.png" />
 5. 관계 (Realationship)
 	- 2개 이상의 개체 사이에 존재하는 연관성
 	- 관계 타입
 		- 개체 타입과 개체 타입 간의 연결 가능한 관계를 정의한 것
 	- 관계 집합
 		- 관계로 연결된 집합
-	- ![[Pasted image 20220803180722.png]]
+	- <img src="https://user-images.githubusercontent.com/83208762/182620059-df13644d-80c0-4678-bcf6-f135baa07a57.png" />
 	- 관계 타입의 ER 다이어그램 표현
 		- 마름모 모양으로 표시
-		- ![[Pasted image 20220803180740.png]]
+		- <img src="https://user-images.githubusercontent.com/83208762/182620063-a1fec85b-8315-4b8d-bec8-441677856e0a.png" />
 	- 관계의 유형 (관계에 참여하고 있는 개체 타입 관계)
 		- 단항 관계
 		- 이항 관계
 		- 3항 관계
 		- n항 관계
-		- ![[Pasted image 20220803180811.png]]
+		- <img src="https://user-images.githubusercontent.com/83208762/182620065-6565088c-50d1-443f-9fae-589562039c6a.png" />
 		- 예시1 : 교수와 과목 간의 관계 (강좌)를 E-R 다이어그램으로 표현
 			- 개체 타입 : 교수, 과목
 			- 관계 타입 : 강좌
-			- ![[Pasted image 20220803180916.png]]
+			- <img src="https://user-images.githubusercontent.com/83208762/182620068-2a0ef2af-89aa-40e2-be2f-6a737bb6366f.png" />
 		- 예시2 : 고객이 상품을 주문하는 관계를 E-R 다이어그램으로 표현
 			- 개체 타입 : 고객, 상품
 			- 관계 타입 : 주문
-			- ![[Pasted image 20220803180959.png]]
+			- <img src="https://user-images.githubusercontent.com/83208762/182620070-b22e4bfd-710f-46b4-a2be-d583cd009d4f.png" />
 	- 맵핑 카디널리티 (Mapping Cardinality)
 		- 관계와 개체 타입이 연결될 때 대응(mapping)되는 수
 		- 이항 관계 맵핑 카디널리티
 			- 일대일 (1:1)
 				- 관계를 맺고 있는 개체 집합 X의 각 원소가 개체 집합 Y의 원소 한 개와 대응되는 관계
-				- ![[Pasted image 20220803203349.png]]
+				- <img src="https://user-images.githubusercontent.com/83208762/182620074-1a7f27d2-1f23-4daa-99c4-e653fc057f83.png" />
 			- 일대다 (1:N)
-				- ![[Pasted image 20220803203358.png]]
+				- <img src="https://user-images.githubusercontent.com/83208762/182620078-2998d232-e926-463d-9301-8e439e2c4f50.png" />
 			- 다대일 (N:1)
-				- ![[Pasted image 20220803203405.png]]
+				- <img src="https://user-images.githubusercontent.com/83208762/182620079-3ce8d845-c4a5-4750-8b6d-99cb3946dfb7.png" />
 			- 다대다 (N:M)
-				- ![[Pasted image 20220803203412.png]]
+				- <img src="https://user-images.githubusercontent.com/83208762/182620081-38d183e8-aeff-4d25-9412-6ba236291f1f.png" />
 6. IE 표기법
 	- 정보공학에서 사용하는 데이터 모델 표기법
 	- 많이 사용되는 표기법 중의 하나이지만 집합의 상세 표현에 있어서 공간을 많이 차지하는 단점
 	- ERWin이라는 데이터 모델링 툴에서 사용
-	- ![[Pasted image 20220803221039.png]]
+	- <img src="https://user-images.githubusercontent.com/83208762/182620084-5e678b1a-cc34-4ead-8a9c-3cd11baa8ce5.png" />
 	- IE 표기법 기호와 의미
-		- ![[Pasted image 20220803221052.png]]
-		- ![[Pasted image 20220803221101.png]]
-		- ![[Pasted image 20220803221108.png]]
+		- <img src="https://user-images.githubusercontent.com/83208762/182620086-45f8fce2-e8e6-43ae-9fd8-faacafac426c.png" />
+		- <img src="https://user-images.githubusercontent.com/83208762/182620090-b3c23c92-c0ef-40b4-acad-887994f7e629.png" />
+		- <img src="https://user-images.githubusercontent.com/83208762/182620092-f9cd5f93-2138-4f4c-b519-029f74f5beb3.png" />
 	- 개채 선택성 표기
 		- 해당 개체 1건에 대한 상대 개체 선택성 표기
-		- ![[Pasted image 20220803221129.png]]
-		- ![[Pasted image 20220803221135.png]]
+		- <img src="https://user-images.githubusercontent.com/83208762/182620095-3da3aa47-0c6e-4a1e-9638-dda572aca3b5.png" />
+		- <img src="https://user-images.githubusercontent.com/83208762/182620101-5cc43e27-3605-41fb-ac74-c60031b3b0a1.png" />
 
 ### 논리적 모델링
 - E-R 모델을 관계 데이터 모델로 사상
 - 개념적 모델링에서 만든 ER 모델을 실제 데이터베이스를 구축하기 위해 사용하고자 하는 DBMS에 맞게 사상
-- ![[Pasted image 20220803221327.png]]
-- ![[Pasted image 20220803221332.png]]
+- <img src="https://user-images.githubusercontent.com/83208762/182620104-989f8919-241a-4f33-80d1-5f7ee2cd425e.png" />
+- <img src="https://user-images.githubusercontent.com/83208762/182620107-70af7263-d3b2-41d1-9c77-54ec91045f0e.png" />
 	- 교수 - 강좌 - 과목 관계의 E-R 모델을 관계 데이터 모델로 사상한 결과 (개념적 모델링 결과를 논리적 모델링으로 전환한 결과)
-	- ![[Pasted image 20220803221536.png]]
+	- <img src="https://user-images.githubusercontent.com/83208762/182620110-c993ab87-9ed5-4582-9f71-8ba3ad1dbd3a.png" />
 		- 고객 - 주문 - 상품 관계의 E-R 모델을 관계 데이터 모델로 사상한 결과
 
 ### 물리적 모델링
 - 작성된 논리적 모델(E-R 모델을 관계 데이터 모델로 사상)을 실제 컴퓨터의 저장 장치에 저장하기 위한 물리적 구조를 정의하는 과정
 - DBMS의 특성에 맞게 저장 구조 정의
-- ![[Pasted image 20220803221716.png]]
+- <img src="https://user-images.githubusercontent.com/83208762/182620113-912dd3ae-5874-48ea-b0a9-318b1141837f.png" />
 
 ### 개념적 - 논리적 - 물리적 모델링
-![[Pasted image 20220803221740.png]]
+<img src="https://user-images.githubusercontent.com/83208762/182620114-fb863bbd-c90c-45ff-aac0-b5c4fd5e0ae3.png" />
