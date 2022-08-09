@@ -9,7 +9,7 @@
 - Naver Cloud Platform (NCP)
 
 #### Naver AI API 서비스
-- CLOVA Fave Recognition (CFR)
+- CLOVA Face Recognition (CFR)
 	- 얼굴 인식
 	- 유명인 얼굴 인식
 - CLOVA OCR (Optical Character Recognition)
@@ -19,7 +19,7 @@
 - Pose Estimation
 - Object Detection / Papago
 
-##### CLOVA Fave Recognition (CFR)
+##### CLOVA Face Recognition (CFR)
 - 이미지 속의 얼굴을 감지하고 인식하여 얻은 다양한 정보를 제공하는 API 서비스
 - 입력된 비전 데이터(이미지 파일)를 통해 얼굴을 인식하거나 얼굴을 감지
 - 유명인 얼굴 인식 : 닮은 유명인 이름, 닮은 정도
