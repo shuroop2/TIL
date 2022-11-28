@@ -10,13 +10,12 @@ class Solution {
         
         ArrayList<Integer> keySet = new ArrayList<>(map.keySet());
         Collections.sort(keySet, (o1, o2) -> (map.get(o2).compareTo(map.get(o1))));
-        int tmp = k;
         
-        while(tmp > 0) {
+        while(k > 0) {
             for(int i : keySet) {
-                tmp -= map.get(i);
+                k -= map.get(i);
                 answer++;
-                if(tmp <= 0)
+                if(k <= 0)
                     break;
             }
         }
