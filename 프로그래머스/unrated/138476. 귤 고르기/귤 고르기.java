@@ -14,13 +14,8 @@ class Solution {
         
         while(tmp > 0) {
             for(int i : keySet) {
-                if(map.get(i) > k)
-                    return 1;
-                else
-                    tmp -= map.get(i);
-                
+                tmp -= map.get(i);
                 answer++;
-                
                 if(tmp <= 0)
                     break;
             }
